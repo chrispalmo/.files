@@ -132,7 +132,7 @@ alias b='cd -'
 alias ~='cd ~'
 alias o='open'
 alias o.='open .'
-alias of='vim $(fzf)'
+alias of='vim $(fzfp)'
 alias cf="fzf | cd"
 
 alias trash='safe_rm'
@@ -321,3 +321,4 @@ export PATH="/usr/local/bin/code:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_DEFAULT_OPTS='--bind ctrl-s:select-all'
+alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
