@@ -11,3 +11,10 @@
 [ ! -e ~/.tmux/plugins/tpm ] &&
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &&
     ~/.tmux/plugins/tpm/bindings/install_plugins
+
+# install vundle
+[ ! -e ~/.tmux/plugins/Vundle.vim ] &&
+   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# install all plugins with vundle
+vim +PluginInstall +qall
