@@ -322,3 +322,15 @@ export PATH="/usr/local/bin/code:$PATH"
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_DEFAULT_OPTS='--bind ctrl-s:select-all'
 alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
+    export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
+    ssh)          fzf "$@" --preview 'dig {}' ;;
+    *)            fzf "$@" ;;
+  esac
+}
