@@ -119,10 +119,8 @@ alias dv="cd ~/dev/"
 alias lh4200="o http://localhost:4200/"
 
 # Misc
-alias ll='pwd && ls -l'
-alias la='pwd && ls -lA'
-alias l='ls -hpCF'
-alias cll="clear; ls -lAh"
+alias l='pwd && ls -lAh'
+alias cl='clear; pwd && ls -lAh'
 alias cp='cp -i'
 alias mv='mv -i'
 alias x='xargs'
@@ -134,7 +132,7 @@ alias b='cd -'
 alias ~='cd ~'
 alias o='open'
 alias o.='open .'
-alias of='fzf | xargs vim'
+alias of='vim $(fzf)'
 alias cf="fzf | cd"
 
 alias trash='safe_rm'
@@ -246,6 +244,8 @@ alias gdf='gcd ; gfiles | fzf8 | xargs git diff ; cd -' # fzf-assisted git diff
 alias gdsf='gcd ; gfiles | fzf8 | xargs git diff --staged ; cd -' # fzf-assisted git diff
 alias gof='gcd ; gfiles | fzf8 | xargs git checkout ; cd -' # fzf-assisted git checkout
 alias gobf='gbranches_raw | fzf8 | xargs git checkout' # fzf-assisted git checkout branch
+alias grf='gcd ; git diff --staged --name-only | fzf -m --height=8 | xargs git reset ; cd -'
+alias grmf='gcd ; git diff --name-only --diff-filter=U | fzf -m --height=8 | xargs git rm ; cd -'
 
 ## Github CLI
 alias ghprv='gh pr view --web'
@@ -319,5 +319,5 @@ export PATH="/usr/local/bin/code:$PATH"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_DEFAULT_OPTS='--bind ctrl-s:select-all'
