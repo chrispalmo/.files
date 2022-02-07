@@ -38,7 +38,8 @@ bindkey '^e' end-of-line
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
-# Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
+# Zsh Line Editor (visual mode)
+## Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=1
 
 function zle-line-init zle-keymap-select {
