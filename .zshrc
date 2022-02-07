@@ -308,7 +308,7 @@ if [ -f '/Users/cp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cp/google-cl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/cp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/completion.zsh.inc'; fi
-alias cc="make --directory=/Users/cp/dev/cs2 --no-print-directory --"
+alias cc=""
 
 # n
 # To avoid using sudo and sudo-related permission issues, set the N_PREFIX location to something in the user library.
