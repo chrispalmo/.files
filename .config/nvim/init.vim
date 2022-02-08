@@ -62,7 +62,7 @@ set directory=~/.vim/swaps
 set guifont=Menlo:h15
 
 "colors
-colorscheme luna
+colorscheme desert
 set termguicolors
 
 "tabs
