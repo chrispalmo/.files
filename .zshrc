@@ -133,7 +133,7 @@ alias b='cd -'
 alias ~='cd ~'
 alias o='open'
 alias o.='open .'
-alias of='vim $(fzfp)'
+alias of='nvim $(fzfp)'
 alias cf="fzf | cd"
 
 alias trash='safe_rm'
@@ -149,15 +149,14 @@ alias :Q='exit'
 alias copy="tr -d '\n' | pbcopy" # remove carriage return at the end of pbcopy on a mac.
 alias d="deactivate"
 
-alias vim='nvim'
-alias v='vim'
+alias v='nvim'
 alias tmux='tmux -2'
 alias ta='tmux a'
 alias tm='TMUX= tmux'
 alias tx='tmuxinator start'
-alias vimrc='vim ~/.vimrc'
-alias zshrc='vim ~/.zshrc'
-alias v.="vim ."
+alias vimrc='nvim ~/.vimrc'
+alias zshrc='nvim ~/.zshrc'
+alias v.="nvim ."
 alias bf='fzf | xargs bat'
 
 # Git
