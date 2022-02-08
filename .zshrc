@@ -125,6 +125,7 @@ alias cl='clear; pwd && ls -lAh'
 alias cp='cp -i'
 alias mv='mv -i'
 alias x='xargs'
+alias lag='ls -lAh | ag '
 
 alias ..="cd .."
 alias ..2="cd ../../"
