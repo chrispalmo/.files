@@ -10,6 +10,9 @@
 [ ! -e ~/.vimrc       ] && ln -s ~/.files/.config/nvim/init.vim  ~/.vimrc
 [ ! -e ~/.zshrc       ] && ln -s ~/.files/.zshrc                 ~/.zshrc
 
+# import moom config
+defaults import com.manytricks.Moom ~/.files/.moom/moom.plist
+
 # install tmux plugins
 [ ! -e ~/.tmux/plugins/tpm ] &&
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &&

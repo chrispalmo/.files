@@ -14,6 +14,17 @@ brew install tmuxinator
 brew install tree
 ```
 
+## optional (non-CLI)
+
+```
+brew install --cask karabiner-elements
+brew install --cask meetingbar
+open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
+```
+
+Ensure Moom is closed before running `install.sh`.
+
+
 ## Install useful key bindings and fuzzy completion
 
 ```
