@@ -27,7 +27,7 @@ let g:airline#extensions#tabline#enabled = 1 "enable the list of buffers
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "name buffers unambiguously
 
 "fzf
-let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore-vcs --hidden -g "!node_modules/" -g "!.git/*" -g "!*.pyc" -g "!frontend/coverage/*"'
+let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore-vcs --hidden -g "!node_modules/" -g "!.git/*" -g "!*.pyc" -g "!frontend/coverage/*" -g "!venv" -g "!env"'
 
 "NERDTree
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -39,15 +39,17 @@ nmap <leader>r :NERDTreeFind<cr>
 
 "general
 syntax on
+set clipboard+=unnamedplus "Yank to the system clipboard (*** warning ***: can break large macros)
 set cursorline
 set encoding=utf-8 nobomb
+set ignorecase smartcase "when searching with / ignore case unless uppercase is used
 set nobackup
 set nowrap
 set nospell
 set number
 set ruler
 set showtabline=2 "always show tab bar
-set wildignore=*.class,.zsh_history,.zcompdump
+set wildignore=*.class,.zsh_history,.zcompdump,*/node_modules/**/*,*.aux,*/.git/**/*,*/venv/**/*,*/env/**/*
 set incsearch
 set hlsearch
 set relativenumber
@@ -63,7 +65,6 @@ set guifont=Menlo:h15
 
 "colors
 colorscheme desert
-set termguicolors
 
 "tabs
 set expandtab "<tab> produces spaces
@@ -72,8 +73,8 @@ set shiftwidth=4 "num spaces with < and >
 set tabstop=8 "num spaces rendered by a tab character
 
 "indentation
-"set autoindent "autoindent
-"set smartindent "indent on <cr>
+set autoindent
+set smartindent
 
 "buffers and tabs
 set hidden
@@ -87,6 +88,10 @@ nmap <c-s> :Buffers<cr>
 
 "search current selection
 vnoremap <leader>f "zy/<c-r>z<cr>
+
+"center search result
+nnoremap n nzz
+nnoremap N Nzz
 
 "clear search
 nmap <c-n> :noh<cr>
@@ -172,3 +177,10 @@ inoremap <leader>d debugger;<esc>
 autocmd BufWritePre * %s/\s\+$//e
 
 autocmd FileType typescriptreact setlocal suffixesadd+=.ts
+
+" Enable undo file so you can undo after saving
+if has('persistent_undo')
+  silent !mkdir -p $HOME/.vim/undo
+  set undofile
+  set undodir=$HOME/.vim/undo
+endif
