@@ -24,13 +24,19 @@ brew install --cask karabiner-elements
 brew install --cask meetingbar
 ```
 
-Ensure Moom is closed before running `install.sh`.
+*Ensure Moom is closed before running `install.sh` below*
 
 
-## Install useful key bindings and fuzzy completion
+## install useful key bindings and fuzzy completion
 
 ```
 $(brew --prefix)/opt/fzf/install
+```
+
+## git setup
+```
+git config --global user.name "chrispalmo"
+git config --global user.email "34981948+chrispalmo@users.noreply.github.com"
 ```
 
 ## clone this repo to `~/.files`
