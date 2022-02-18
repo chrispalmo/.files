@@ -41,7 +41,7 @@ brew install --cask meetingbar
 $(brew --prefix)/opt/fzf/install
 ```
 
-## git setup
+## git + ssh setup
 
 ```
 git config --global user.name "chrispalmo"
@@ -49,6 +49,7 @@ git config --global user.email "34981948+chrispalmo@users.noreply.github.com"
 
 ssh-keygen -t rsa -C "optional_comment"
 pbcopy < ~/.ssh/id_rsa.pub
+
 # click `New SSH key` and paste the public key
 open "https://github.com/settings/keys"
 ```
