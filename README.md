@@ -36,7 +36,7 @@ $(brew --prefix)/opt/fzf/install
 ## clone this repo to `~/.files`
 
 ```
-git clone ${url-to-this-repo} ~/.files
+git clone git@github.com:chrispalmo/.files.git ~/.files
 ```
 
 ## install
