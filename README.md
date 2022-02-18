@@ -24,6 +24,10 @@ open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
 open "https://visualstudio.microsoft.com/vs/mac/"
 open "https://www.google.com/chrome/"
 
+open "https://slack.com/intl/en-au/downloads/instructions/mac"
+open "https://zoom.us/support/download?os=mac"
+open "https://www.microsoft.com/en-au/microsoft-teams/download-app"
+
 brew install --cask karabiner-elements
 brew install --cask meetingbar
 ```
