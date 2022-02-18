@@ -23,7 +23,7 @@ brew install tree
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
 open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
-open "https://visualstudio.microsoft.com/vs/mac/"
+open "https://code.visualstudio.com/Download"
 open "https://www.google.com/chrome/"
 
 open "https://www.dropbox.com/install"
