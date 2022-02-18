@@ -18,11 +18,16 @@ brew install tree
 ## optional apps and settings
 
 ```
+# permanently hide dock (need to separately set "Automatically hide and show the
+# Dock in System Preferences)
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
 open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
 open "https://visualstudio.microsoft.com/vs/mac/"
 open "https://www.google.com/chrome/"
+
+open "https://www.dropbox.com/install"
+open "https://www.google.com/drive/download/"
 
 open "https://slack.com/intl/en-au/downloads/instructions/mac"
 open "https://zoom.us/support/download?os=mac"
