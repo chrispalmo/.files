@@ -18,8 +18,12 @@ brew install tree
 ## optional apps and settings
 
 ```
-open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
+
+open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
+open "https://visualstudio.microsoft.com/vs/mac/"
+open "https://www.google.com/chrome/"
+
 brew install --cask karabiner-elements
 brew install --cask meetingbar
 ```
