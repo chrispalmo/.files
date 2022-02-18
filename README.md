@@ -19,19 +19,27 @@ brew install tree
 
 ```
 # permanently hide dock (need to separately set "Automatically hide and show the
-# Dock in System Preferences)
+# Dock in System Preferences")
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
+# OS essentials
 open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
 open "https://code.visualstudio.com/Download"
 open "https://www.google.com/chrome/"
 
-open "https://www.dropbox.com/install"
-open "https://www.google.com/drive/download/"
-
+# comms
 open "https://slack.com/intl/en-au/downloads/instructions/mac"
 open "https://zoom.us/support/download?os=mac"
 open "https://www.microsoft.com/en-au/microsoft-teams/download-app"
+
+# storage
+open "https://www.dropbox.com/install"
+open "https://www.google.com/drive/download/"
+
+# ms device enrollment
+open
+"https://docs.microsoft.com/en-us/mem/intune/user-help/enroll-your-device-in-intune-macos-cp"
+open "https://go.microsoft.com/fwlink/?linkid=853070"
 
 brew install --cask karabiner-elements
 brew install --cask meetingbar
