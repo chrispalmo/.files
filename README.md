@@ -31,6 +31,7 @@ open "https://www.google.com/chrome/"
 open "https://slack.com/intl/en-au/downloads/instructions/mac"
 open "https://zoom.us/support/download?os=mac"
 open "https://www.microsoft.com/en-au/microsoft-teams/download-app"
+open "https://www.signal.org/download/macos/"
 
 # storage
 open "https://www.dropbox.com/install"
