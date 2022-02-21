@@ -9,10 +9,15 @@ brew install fzf
 brew install gh
 brew install glab
 brew install neovim
+brew install ripgrep
 brew install the_silver_searcher
 brew install tmux
 brew install tmuxinator
 brew install tree
+
+# clipchamp
+brew install python@3.9 n git git-lfs redis jq
+brew link python@3.9
 ```
 
 ## optional apps and settings
