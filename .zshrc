@@ -6,15 +6,13 @@ compinit
 promptinit
 
 function set-prompt {
-    V=""
+    VENV=""
     if [ -n "$VIRTUAL_ENV" ]; then
         BN=$(basename $VIRTUAL_ENV)
-        V="($BN) "
+        VENV="($BN)"
     fi
-    PROMPT="$V%{$fg_bold[green]%}%n@%m%{$reset_color%}%{$fg[black]%}:%{$fg_bold[blue]%}%~%{$fg_bold[magenta]%}%{$reset_color%}"$'\n'"$1 "
+    PROMPT="$VENV%{$fg_bold[green]%}%n%{$reset_color%}%{$fg[white]%}:%{$fg_bold[blue]%}%~%{$fg_bold[magenta]%}%{$reset_color%} $1 "
 }
-
-set-prompt '$'
 
 HISTSIZE=100000
 SAVEHIST=100000
@@ -125,7 +123,10 @@ alias cl='clear; pwd && ls -lAh'
 alias cp='cp -i'
 alias mv='mv -i'
 alias x='xargs'
-alias lag='ls -lAh | ag '
+
+function lag() {
+    ls -lAh | ag $*
+}
 
 alias ..="cd .."
 alias ..2="cd ../../"
