@@ -5,13 +5,22 @@ colors
 compinit
 promptinit
 
+# Enabling and setting git info var to be used in prompt config.
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:git*' formats "- (%b) "
+precmd() {
+    vcs_info
+}
+
 function set-prompt {
     VENV=""
     if [ -n "$VIRTUAL_ENV" ]; then
         BN=$(basename $VIRTUAL_ENV)
         VENV="($BN)"
     fi
-    PROMPT="$VENV%{$fg_bold[green]%}%n%{$reset_color%}%{$fg[white]%}:%{$fg_bold[blue]%}%~%{$fg_bold[magenta]%}%{$reset_color%} $1 "
+    BRANCH=$(echo "${vcs_info_msg_0_}" | sed 's/.*(//;s/).*//;')
+    PROMPT="$VENV%{$fg_bold[green]%}%n%{$reset_color%} %{$fg_bold[yellow]%}%~%{$fg_bold[magenta]%} ${BRANCH}%{$reset_color%} $1 "
 }
 
 HISTSIZE=100000
