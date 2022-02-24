@@ -154,8 +154,7 @@ alias cwd='pwd | tr -d "\r\n" | pbcopy' #copy working directory
 alias h='history'
 alias ppath="echo $PATH | tr ':' '\n'" #print path
 alias q="exit"
-alias :q="exit"
-alias :Q='exit'
+alias c="clear"
 
 alias copy="tr -d '\n' | pbcopy" # remove carriage return at the end of pbcopy on a mac.
 alias d="deactivate"
@@ -288,22 +287,22 @@ alias cc3="make --directory=$CS3 --no-print-directory --"
 alias cs1="deactivate_venv; cd $CS1/; source .venv39/bin/activate"
 alias cs1f="cs1; yarn create:download-translations; cs1; pwd; git status; cc1 start-create-webapp"
 alias cs1b="cs1; pwd; git status; cc1 start-create-backend"
-alias cs1install="cs1; git pull --rebase; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
-alias cs1installClean="cs1; git pull --rebase; ./installRequirements.sh --clean;"
+alias cs1install="cs1; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
+alias cs1installClean="cs1; ./installRequirements.sh --clean;"
 alias cs1clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs1; cs1install"
 
 alias cs2="deactivate_venv; cd $CS2/; source .venv39/bin/activate"
 alias cs2f="cs2; yarn create:download-translations; cs2; pwd; git status; cc2 start-create-webapp"
 alias cs2b="cs2; pwd; git status; cc1 start-create-backend"
-alias cs2install="cs2; git pull --rebase; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
-alias cs2installClean="cs2; git pull --rebase; ./installRequirements.sh --clean;"
+alias cs2install="cs2; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
+alias cs2installClean="cs2; ./installRequirements.sh --clean;"
 alias cs2clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs2; cs2install"
 
 alias cs3="deactivate_venv; cd $CS3/; source .venv39/bin/activate"
 alias cs3f="cs3; yarn create:download-translations; cs3; pwd; git status; cc3 start-create-webapp"
 alias cs3b="cs3; pwd; git status; cc1 start-create-backend"
-alias cs3install="cs3; git pull --rebase; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
-alias cs3installClean="cs3; git pull --rebase; ./installRequirements.sh --clean;"
+alias cs3install="cs3; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
+alias cs3installClean="cs3; ./installRequirements.sh --clean;"
 alias cs3clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs3; cs3install"
 
 alias ghcs="o https://github.com/clipchamp/clipchamp-stack"
