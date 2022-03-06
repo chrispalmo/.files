@@ -119,12 +119,13 @@ alias lh=localhost
 alias soa='open https://stackoverflow.com/questions/ask'
 alias so=stackoverflow
 
-# MacOS
+# Nav
+alias .f="cd ~/.files/"
 alias db="cd ~/Dropbox/"
+alias bw="cd ~/Dropbox/apps/byword/"
 alias dt="cd ~/Desktop/"
 alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
-alias lh4200="o http://localhost:4200/"
 
 # Misc
 alias l='pwd && ls -lAh'
@@ -276,34 +277,38 @@ alias glprc='ghmrv'
 CS1=~/dev/cs1
 CS2=~/dev/cs2
 CS3=~/dev/cs3
-alias cs="cd $CS1"
-alias cs="cd $CS2"
-alias cs="cd $CS3"
+CR1=~/dev/cr1
+CR2=~/dev/cr2
+CR3=~/dev/cr3
 
 alias cc1="make --directory=$CS1 --no-print-directory --"
 alias cc2="make --directory=$CS2 --no-print-directory --"
 alias cc3="make --directory=$CS3 --no-print-directory --"
 
-alias cs1="deactivate_venv; cd $CS1/; source .venv39/bin/activate"
+alias cs1="deactivate_venv; cd $CS1; source .venv39/bin/activate"
 alias cs1f="cs1; yarn create:download-translations; cs1; pwd; git status; cc1 start-create-webapp"
 alias cs1b="cs1; pwd; git status; cc1 start-create-backend"
 alias cs1install="cs1; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs1installClean="cs1; ./installRequirements.sh --clean;"
 alias cs1clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs1; cs1install"
 
-alias cs2="deactivate_venv; cd $CS2/; source .venv39/bin/activate"
+alias cs2="deactivate_venv; cd $CS2; source .venv39/bin/activate"
 alias cs2f="cs2; yarn create:download-translations; cs2; pwd; git status; cc2 start-create-webapp"
 alias cs2b="cs2; pwd; git status; cc1 start-create-backend"
 alias cs2install="cs2; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs2installClean="cs2; ./installRequirements.sh --clean;"
 alias cs2clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs2; cs2install"
 
-alias cs3="deactivate_venv; cd $CS3/; source .venv39/bin/activate"
+alias cs3="deactivate_venv; cd $CS3; source .venv39/bin/activate"
 alias cs3f="cs3; yarn create:download-translations; cs3; pwd; git status; cc3 start-create-webapp"
 alias cs3b="cs3; pwd; git status; cc1 start-create-backend"
 alias cs3install="cs3; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs3installClean="cs3; ./installRequirements.sh --clean;"
 alias cs3clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs3; cs3install"
+
+alias cr1="deactivate_venv; cd $CR1"
+alias cr2="deactivate_venv; cd $CR2"
+alias cr3="deactivate_venv; cd $CR3"
 
 alias ghcs="o https://github.com/clipchamp/clipchamp-stack"
 alias ghcr="o https://github.com/clipchamp/content-repository"
