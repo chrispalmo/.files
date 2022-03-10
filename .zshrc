@@ -89,12 +89,15 @@ safe_rm()
     done
 }
 
-# web search
+# Web search
 function explainshell() {
     open -na "Google Chrome" --args "https://explainshell.com/explain?cmd=$*"
 }
-function localhost() {
+function localhostHTTPS() {
     open "https://localhost:$*"
+}
+function localhostHTTP() {
+    open "http://localhost:$*"
 }
 function google() {
     open -na "Google Chrome" --args "https://www.google.com/search?q=$*"
@@ -112,10 +115,17 @@ function deactivate_venv() {
     if [[ $venv_active != *"deactivate not found"* ]]; then deactivate; fi
 }
 
+# Search for files in the current folder
+function lag() {
+    ls -lAh | ag $*
+}
+
 # Web search
 alias es=explainshell
 alias gg=google
-alias lh=localhost
+alias lh=localhostHTTPS
+alias lhs=localhostHTTPS
+alias lhh=localhostHTTP
 alias soa='open https://stackoverflow.com/questions/ask'
 alias so=stackoverflow
 
@@ -133,10 +143,6 @@ alias cl='clear; pwd && ls -lAh'
 alias cp='cp -i'
 alias mv='mv -i'
 alias x='xargs'
-
-function lag() {
-    ls -lAh | ag $*
-}
 
 alias ..="cd .."
 alias ..2="cd ../../"
@@ -164,7 +170,8 @@ alias v='nvim'
 alias tmux='tmux -2'
 alias ta='tmux a'
 alias tm='TMUX= tmux'
-alias tx='tmuxinator start'
+alias t8='tmuxinator'
+alias t8s='tmuxinator start'
 alias vimrc='nvim ~/.vimrc'
 alias zshrc='nvim ~/.zshrc'
 alias v.="nvim ."
@@ -306,9 +313,11 @@ alias cs3install="cs3; ./installRequirements.sh backend; source .venv39/bin/acti
 alias cs3installClean="cs3; ./installRequirements.sh --clean;"
 alias cs3clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs3; cs3install"
 
-alias cr1="deactivate_venv; cd $CR1"
-alias cr2="deactivate_venv; cd $CR2"
-alias cr3="deactivate_venv; cd $CR3"
+alias cr1="cd $CR1"
+alias cr1install="cr1; yarn install; cd libs/content; yarn prepare; cr1; cd libs/content-hooks; yarn prepare; cr1"
+alias cr1a="cr1; yarn workspace content-repo-api dev"
+alias cr1f="cr1; yarn workspace portal dev"
+alias cr1b="cr1; yarn workspace portal-backend start:ts"
 
 alias ghcs="o https://github.com/clipchamp/clipchamp-stack"
 alias ghcr="o https://github.com/clipchamp/content-repository"
