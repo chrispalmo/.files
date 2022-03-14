@@ -131,6 +131,7 @@ alias so=stackoverflow
 
 # Nav
 alias .f="cd ~/.files/"
+alias df="cd ~/.files/"
 alias db="cd ~/Dropbox/"
 alias bw="cd ~/Dropbox/apps/byword/"
 alias dt="cd ~/Desktop/"
@@ -301,14 +302,14 @@ alias cs1clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs1; cs1i
 
 alias cs2="deactivate_venv; cd $CS2; source .venv39/bin/activate"
 alias cs2f="cs2; yarn create:download-translations; cs2; pwd; git status; cc2 start-create-webapp"
-alias cs2b="cs2; pwd; git status; cc1 start-create-backend"
+alias cs2b="cs2; pwd; git status; cc2 start-create-backend"
 alias cs2install="cs2; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs2installClean="cs2; ./installRequirements.sh --clean;"
 alias cs2clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs2; cs2install"
 
 alias cs3="deactivate_venv; cd $CS3; source .venv39/bin/activate"
 alias cs3f="cs3; yarn create:download-translations; cs3; pwd; git status; cc3 start-create-webapp"
-alias cs3b="cs3; pwd; git status; cc1 start-create-backend"
+alias cs3b="cs3; pwd; git status; cc3 start-create-backend"
 alias cs3install="cs3; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs3installClean="cs3; ./installRequirements.sh --clean;"
 alias cs3clone="git clone git@github.com:clipchamp/clipchamp-stack.git cs3; cs3install"
