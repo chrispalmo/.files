@@ -2,8 +2,13 @@
 
 # make symlinks for dotfiles
 [ ! -e ~/.config           ] && mkdir ~/.config
+
 [   -e ~/.config/karabiner ] && mv    ~/.config/karabiner        ~/.config/karabiner.backup
 [ ! -e ~/.config/karabiner ] && ln -s ~/.files/.config/karabiner ~/.config/karabiner
+
+[   -e ~/.config/tmuxinator ] && mv    ~/.config/tmuxinator        ~/.config/tmuxinator.backup
+[ ! -e ~/.config/tmuxinator ] && ln -s ~/.files/.config/tmuxinator ~/.config/tmuxinator
+
 [ ! -e ~/.config/nvim ] && ln -s ~/.files/.config/nvim           ~/.config/nvim
 [ ! -e ~/.tmux.conf   ] && ln -s ~/.files/.tmux.conf             ~/.tmux.conf
 [ ! -e ~/.vim         ] && ln -s ~/.files/.vim                   ~/.vim
