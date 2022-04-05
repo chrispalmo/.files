@@ -16,6 +16,9 @@
 [   -e ~/.zshrc       ] && mv    ~/.zshrc                        ~/.zshrc.backup
 [ ! -e ~/.zshrc       ] && ln -s ~/.files/.zshrc                 ~/.zshrc
 
+[ ! -e ~/.gitignore_global ] && ln -s ~/.files/.gitignore_global ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
+
 # import moom config
 defaults import com.manytricks.Moom ~/.files/.moom/moom.plist
 

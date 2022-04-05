@@ -22,11 +22,6 @@ brew link python@3.9
 
 ## optional apps and settings
 
-```
-# permanently hide dock (need to separately set "Automatically hide and show the
-# Dock in System Preferences")
-defaults write com.apple.dock autohide-delay -float 1000; killall Dock
-
 # OS essentials
 open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
 open "https://code.visualstudio.com/Download"
