@@ -9,10 +9,18 @@
 [   -e ~/.config/tmuxinator ] && mv    ~/.config/tmuxinator        ~/.config/tmuxinator.backup
 [ ! -e ~/.config/tmuxinator ] && ln -s ~/.files/.config/tmuxinator ~/.config/tmuxinator
 
-[ ! -e ~/.config/nvim ] && ln -s ~/.files/.config/nvim           ~/.config/nvim
-[ ! -e ~/.tmux.conf   ] && ln -s ~/.files/.tmux.conf             ~/.tmux.conf
+[   -e ~/.config/nvim ] && ln -s ~/.files/.config/nvim    ~/.config/nvim.backup
+[ ! -e ~/.config/nvim ] && ln -s ~/.files/.config/nvim    ~/.config/nvim
+
+[   -e ~/.tmux.conf   ] && ln -s ~/.files/.tmux.conf      ~/.tmux.conf.backup
+[ ! -e ~/.tmux.conf   ] && ln -s ~/.files/.tmux.conf      ~/.tmux.conf
+
+[   -e ~/.vim         ] && ln -s ~/.files/.vim                   ~/.vim.backup
 [ ! -e ~/.vim         ] && ln -s ~/.files/.vim                   ~/.vim
+
+[   -e ~/.vimrc       ] && ln -s ~/.files/.config/nvim/init.vim  ~/.vimrc.backup
 [ ! -e ~/.vimrc       ] && ln -s ~/.files/.config/nvim/init.vim  ~/.vimrc
+
 [   -e ~/.zshrc       ] && mv    ~/.zshrc                        ~/.zshrc.backup
 [ ! -e ~/.zshrc       ] && ln -s ~/.files/.zshrc                 ~/.zshrc
 

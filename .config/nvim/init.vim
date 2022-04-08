@@ -39,7 +39,7 @@ nmap <leader>r :NERDTreeFind<cr>
 
 "general
 syntax on
-set clipboard+=unnamedplus "Yank to the system clipboard (*** warning ***: can break large macros)
+#set clipboard+=unnamedplus "Yank to the system clipboard (*** warning ***: can break large macros)
 set cursorline
 set encoding=utf-8 nobomb
 set ignorecase smartcase "when searching with / ignore case unless uppercase is used
