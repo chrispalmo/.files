@@ -1,9 +1,9 @@
-name: cs2
-root: ~/dev/cs2
+name: cs3
+root: ~/dev/cs3
 windows:
-    - cs2:
+    - cs3:
         layout: main-vertical
         panes:
-            - cs2
-            - cs2f
-            - cs2b logs: tail -f log/development.log
+            - cs3
+            - cs3f
+            - cs3b
