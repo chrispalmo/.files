@@ -22,6 +22,7 @@ brew link python@3.9
 
 ## optional apps and settings
 
+```
 # OS essentials
 open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
 open "https://code.visualstudio.com/Download"
