@@ -42,6 +42,9 @@ open "https://www.signal.org/download/macos/"
 open "https://www.dropbox.com/install"
 open "https://www.google.com/drive/download/"
 
+# 2fa
+open "https://authy.com/download/"
+
 # ms device enrollment
 open
 "https://docs.microsoft.com/en-us/mem/intune/user-help/enroll-your-device-in-intune-macos-cp"
