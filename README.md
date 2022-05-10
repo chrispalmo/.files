@@ -7,7 +7,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/cp/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
-    
+
 brew install bat
 brew install fzf
 brew install gh
@@ -33,7 +33,7 @@ open "https://code.visualstudio.com/Download"
 open "https://www.google.com/chrome/"
 
 # comms
-open "https://slack.com/intl/en-au/downloads/instructions/mac"
+open "https://apps.apple.com/au/app/slack-for-desktop/id803453959?mt=12{
 open "https://zoom.us/support/download?os=mac"
 open "https://www.microsoft.com/en-au/microsoft-teams/download-app"
 open "https://www.signal.org/download/macos/"
