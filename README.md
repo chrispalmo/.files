@@ -27,9 +27,19 @@ brew install n
 n latest
 npm install --global yarn
 
-# clipchamp
-brew install redis jq
+# clipchamp (minus `gcloud` items in `macOS.md`)
+brew install redis jq pkg-config cairo pango libpng jpeg giflib librsvg
 n 16
+
+brew tap homebrew/cask-versions
+brew update
+brew tap homebrew/cask
+brew tap adoptopenjdk/openjdk
+brew install --cask adoptopenjdk13
+
+# reverse compatibility for Apple Silicon (M1 and beyond) for programs that
+still reference x86_64 executabled
+softwareupdate --install-rosetta:wq
 ```
 
 ## optional apps and settings

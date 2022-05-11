@@ -332,12 +332,6 @@ alias ghcr="o https://github.com/clipchamp/content-repository"
 # ==== #
 # Path #
 # ==== #
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/cp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/cp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/completion.zsh.inc'; fi
 alias cc=""
 
 # n
@@ -366,3 +360,9 @@ _fzf_comprun() {
   esac
 }
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/cp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/cp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/completion.zsh.inc'; fi
