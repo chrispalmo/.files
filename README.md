@@ -29,6 +29,7 @@ npm install --global yarn
 
 # clipchamp
 brew install redis jq
+n 16
 ```
 
 ## optional apps and settings
@@ -56,6 +57,9 @@ open "https://authy.com/download/"
 open
 "https://docs.microsoft.com/en-us/mem/intune/user-help/enroll-your-device-in-intune-macos-cp"
 open "https://go.microsoft.com/fwlink/?linkid=853070"
+
+# media
+open "https://www.spotify.com/au/download/mac/"
 
 brew install --cask karabiner-elements
 brew install --cask meetingbar
