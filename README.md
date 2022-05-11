@@ -10,6 +10,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install bat
 brew install fzf
+brew install git git-lfs
 brew install gh
 brew install glab
 brew install neovim
@@ -18,10 +19,16 @@ brew install the_silver_searcher
 brew install tmux
 brew install tmuxinator
 brew install tree
+brew install python@3.9
+brew link python@3.9
+
+# package management
+brew install n
+n latest
+npm install --global yarn
 
 # clipchamp
-brew install python@3.9 n git git-lfs redis jq
-brew link python@3.9
+brew install redis jq
 ```
 
 ## optional apps and settings
