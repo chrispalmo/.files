@@ -31,11 +31,12 @@ npm install --global yarn
 brew install redis jq pkg-config cairo pango libpng jpeg giflib librsvg
 n 16
 
-brew tap homebrew/cask-versions
 brew update
 brew tap homebrew/cask
+brew tap homebrew/cask-versions
 brew tap adoptopenjdk/openjdk
 brew install --cask adoptopenjdk13
+brew install --cask temurin17
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
 still reference x86_64 executabled
