@@ -268,8 +268,11 @@ alias grmf='gcd ; git diff --name-only --diff-filter=U | fzf -m --height=8 | xar
 
 ## Github CLI
 alias ghprv='gh pr view --web'
-alias ghprc='gh pr create'
-alias ghprcd='gh pr create --fill --draft ; gh pr view --web'
+alias ghprc='gh pr create --fill --draft ; gh pr view --web'
+alias ghprs='gh search prs'
+alias ghprscp='gh search prs "author:chrispalmo"'
+alias ghprscpo='gh search prs "author:chrispalmo" "is:open"'
+alias ghprscpm='gh search prs "author:chrispalmo" "is:merged"'
 
 ## Gitlab CLI
 alias glmrv='glab mr view'
