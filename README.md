@@ -43,7 +43,7 @@ still reference x86_64 executabled
 softwareupdate --install-rosetta:wq
 ```
 
-## optional apps and settings
+## other apps and settings
 
 ```
 # OS essentials
@@ -71,6 +71,9 @@ open "https://go.microsoft.com/fwlink/?linkid=853070"
 
 # media
 open "https://www.spotify.com/au/download/mac/"
+
+# clipchamp
+open "https://docs.docker.com/desktop/mac/install/"
 
 brew install --cask karabiner-elements
 brew install --cask meetingbar
