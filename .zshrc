@@ -269,6 +269,7 @@ alias grmf='gcd ; git diff --name-only --diff-filter=U | fzf -m --height=8 | xar
 ## Github CLI
 alias ghprv='gh pr view --web'
 alias ghprc='gh pr create --fill --draft ; gh pr view --web'
+alias ghprc-nodraft='gh pr create --fill ; gh pr view --web'
 alias ghprs='gh search prs'
 alias ghprscp='gh search prs "author:chrispalmo"'
 alias ghprscpo='gh search prs "author:chrispalmo" "is:open"'
@@ -297,7 +298,7 @@ alias cc2="make --directory=$CS2 --no-print-directory --"
 alias cc3="make --directory=$CS3 --no-print-directory --"
 
 alias cs1="deactivate_venv; cd $CS1; source .venv39/bin/activate"
-alias cs1f="cs1; yarn create:download-translations; cs1; pwd; git status; cc1 start-create-webapp"
+alias cs1f="cs1; pwd; git status; cc1 start-create-webapp"
 alias cs1b="cs1; pwd; git status; cc1 start-create-backend"
 alias cs1install="cs1; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs1installClean="cs1; ./installRequirements.sh --clean;"
@@ -306,7 +307,7 @@ alias cs1e2e="cs1; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
 alias cs1test="cs1; gcd && cd apps/create && yarn test:file"
 
 alias cs2="deactivate_venv; cd $CS2; source .venv39/bin/activate"
-alias cs2f="cs2; yarn create:download-translations; cs2; pwd; git status; cc2 start-create-webapp"
+alias cs2f="cs2; pwd; git status; cc2 start-create-webapp"
 alias cs2b="cs2; pwd; git status; cc2 start-create-backend"
 alias cs2install="cs2; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs2installClean="cs2; ./installRequirements.sh --clean;"
@@ -315,7 +316,7 @@ alias cs2e2e="cs2; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
 alias cs2test="cs2; gcd && cd apps/create && yarn test:file"
 
 alias cs3="deactivate_venv; cd $CS3; source .venv39/bin/activate"
-alias cs3f="cs3; yarn create:download-translations; cs3; pwd; git status; cc3 start-create-webapp"
+alias cs3f="cs3; pwd; git status; cc3 start-create-webapp"
 alias cs3b="cs3; pwd; git status; cc3 start-create-backend"
 alias cs3install="cs3; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs3installClean="cs3; ./installRequirements.sh --clean;"
