@@ -24,12 +24,8 @@ brew link python@3.9
 
 # package management
 brew install n
-n latest
-npm install --global yarn
-
-# clipchamp (minus `gcloud` items in `macOS.md`)
-brew install redis jq pkg-config cairo pango libpng jpeg giflib librsvg
 n 16
+npm install --global yarn
 
 brew update
 brew tap homebrew/cask
@@ -37,6 +33,17 @@ brew tap homebrew/cask-versions
 brew tap adoptopenjdk/openjdk
 brew install --cask adoptopenjdk13
 brew install --cask temurin17
+
+# clipchamp (minus `gcloud` items in `macOS.md`)
+brew install redis
+brew install jq
+brew install pkg-config
+brew install cairo
+brew install pango
+brew install libpng
+brew install jpeg
+brew install giflib
+brew install librsvg
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
 still reference x86_64 executabled
