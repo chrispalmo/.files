@@ -53,6 +53,7 @@ softwareupdate --install-rosetta:wq
 ## other apps and settings
 
 ```
+
 # OS essentials
 open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
 open "https://code.visualstudio.com/Download"
@@ -115,6 +116,11 @@ clone this repo to `~/.files`:
 ```
 git clone git@github.com:chrispalmo/.files.git ~/.files
 ```
+
+## import terminal profile
+1. open Terminal
+2. `Terminal` --> `preferences` --> `[...]` --> `import` --->
+   `.terminal/terminal-profile.terminal`
 
 ## install
 
