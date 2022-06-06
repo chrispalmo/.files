@@ -36,7 +36,6 @@ setopt NO_BEEP
 zstyle ':completion:*' menu select
 zstyle ':completion:*' ignored-patterns '*?.pyc' '__pycache__' '*.class' '.zcompdump' '.zsh_history'
 
-export TERM=xterm-256color
 export EDITOR=nvim
 export GIT_EDITOR=nvim
 
@@ -153,30 +152,30 @@ alias ~='cd ~'
 alias o='open'
 alias o.='open .'
 alias of='nvim $(fzfp)'
-alias cf="fzf | cd"
+alias cdf="fzf | cd"
+alias catf='fzf | xargs cat'
+alias batf='fzf | xargs bat'
 
 alias trash='safe_rm'
-alias t='safe_rm'
 alias grep='grep -H -n'
-alias cwd='pwd | tr -d "\r\n" | pbcopy' #copy working directory
+alias cwd='pwd | tr -d "\r\n" | pbcopy' # copy working directory
 alias h='history'
-alias ppath="echo $PATH | tr ':' '\n'" #print path
+alias ppath="echo $PATH | tr ':' '\n'" # print path
 alias q="exit"
 alias c="clear"
 
 alias copy="tr -d '\n' | pbcopy" # remove carriage return at the end of pbcopy on a mac.
 alias d="deactivate"
 
-alias v='nvim'
-alias tmux='tmux -2'
-alias ta='tmux a'
-alias tm='TMUX= tmux'
+alias qa='tmux kill-server && exit' # kill all tmux sessions
 alias t8='tmuxinator'
 alias t8s='tmuxinator start'
+
 alias vimrc='nvim ~/.vimrc'
 alias zshrc='nvim ~/.zshrc'
+
+alias v='nvim'
 alias v.="nvim ."
-alias bf='fzf | xargs bat'
 
 # Git
 alias ghcp="o https://github.com/chrispalmo"
@@ -237,6 +236,7 @@ alias fzf8="fzf -m --height=8"
 function gcm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit -m $COMMIT_MESSAGE } || git commit }
 function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m $COMMIT_MESSAGE } || git commit }
 function gcamp () { MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam $MESSAGE }
+
 alias gcd='cd $(git rev-parse --show-toplevel)' # cd to repo root
 alias gbn="git rev-parse --abbrev-ref HEAD" # return current branch name
 alias gfiles='echo "$(git ls-files --others --exclude-standard ; git diff --name-only; git diff --staged --name-only)"' # list modified files
@@ -293,6 +293,8 @@ CR1=~/dev/cr1
 CR2=~/dev/cr2
 CR3=~/dev/cr3
 
+export MS_ALIAS=cpalmieri
+
 alias cc1="make --directory=$CS1 --no-print-directory --"
 alias cc2="make --directory=$CS2 --no-print-directory --"
 alias cc3="make --directory=$CS3 --no-print-directory --"
@@ -302,7 +304,7 @@ alias cs1f="cs1; pwd; git status; cc1 start-create-webapp"
 alias cs1b="cs1; pwd; git status; cc1 start-create-backend"
 alias cs1install="cs1; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs1installClean="cs1; ./installRequirements.sh --clean;"
-alias cs1clone="cd ~/dev; git clone git@github.com:clipchamp/clipchamp-stack.git cs1; cs1install"
+alias cs1clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs1; git lfs pull; cs1install"
 alias cs1e2e="cs1; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
 alias cs1test="cs1; gcd && cd apps/create && yarn test:file"
 
@@ -311,7 +313,7 @@ alias cs2f="cs2; pwd; git status; cc2 start-create-webapp"
 alias cs2b="cs2; pwd; git status; cc2 start-create-backend"
 alias cs2install="cs2; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs2installClean="cs2; ./installRequirements.sh --clean;"
-alias cs2clone="cd ~/dev; git clone git@github.com:clipchamp/clipchamp-stack.git cs2; cs2install"
+alias cs2clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs2; git lfs pull; cs2install"
 alias cs2e2e="cs2; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
 alias cs2test="cs2; gcd && cd apps/create && yarn test:file"
 
@@ -320,7 +322,7 @@ alias cs3f="cs3; pwd; git status; cc3 start-create-webapp"
 alias cs3b="cs3; pwd; git status; cc3 start-create-backend"
 alias cs3install="cs3; ./installRequirements.sh backend; source .venv39/bin/activate; ./installRequirements.sh frontend sharedjs;"
 alias cs3installClean="cs3; ./installRequirements.sh --clean;"
-alias cs3clone="cd ~/dev; git clone git@github.com:clipchamp/clipchamp-stack.git cs3; cs3install"
+alias cs3clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs3; git lfs pull; cs3install"
 alias cs3e2e="cs3; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
 alias cs3test="cs3; gcd && cd apps/create && yarn test:file"
 
@@ -370,3 +372,12 @@ if [ -f '/Users/cp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cp/google-cl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/cp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Open tmux, ensuring
+#   1. `tmux` exists on system
+#   2. we are inside an interactive shell
+#   3. `tmux` doesn't run inside iteself
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
