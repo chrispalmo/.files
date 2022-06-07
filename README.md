@@ -8,6 +8,8 @@
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/cp/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+brew update
+
 brew install bat
 brew install fzf
 brew install git git-lfs
@@ -27,7 +29,6 @@ brew install n
 n 16
 npm install --global yarn
 
-brew update
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
 brew tap adoptopenjdk/openjdk
@@ -44,6 +45,11 @@ brew install libpng
 brew install jpeg
 brew install giflib
 brew install librsvg
+
+# ADO cli
+brew install azure-cli
+az extension add --name azure-devops
+az devops configure --defaults organization=https://dev.azure.com/onedrive project=Clipchamp
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
 still reference x86_64 executabled

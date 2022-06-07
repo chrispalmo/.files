@@ -200,7 +200,7 @@ alias gl='git log'
 alias glf='git log --name-only' # log includes list of files changed
 alias glm='git log --merge' # list of commits that conflict during merge
 alias gm='git merge'
-alias gmm='git merge master'
+alias gmm='git merge master; git status'
 alias go='git checkout' # switch branch
 alias gob='git checkout -b' # create new branch, switch to it
 alias gom='git checkout master'
@@ -280,6 +280,9 @@ alias glmrv='glab mr view'
 alias glmrc='glab mr create'
 alias glprv='glmrv'
 alias glprc='ghmrv'
+
+## Azure DevOps CLI
+alias ado='az devops'
 
 # ================ #
 # Project-specific #
