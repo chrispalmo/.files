@@ -209,9 +209,9 @@ alias go-='git checkout -'
 alias gp='git push'
 alias gpf='git push --force'
 alias gpu='git push --set-upstream origin' # use: gpu branch-name
-alias gr1c='git reset HEAD^' # reset to state before last commit, keeping changes
-alias gr='git reset'
-alias grh='git reset --hard'
+alias grc='git reset HEAD^' # reset to state before last commit, keeping changes
+alias gr='git reset && git status'
+alias grh='git reset --hard && git status'
 alias grbi="git rebase --interactive" # use: `grbi [commit-hash-before-changes]. effect: Merge together all commits AFTER [commit-hash]. Refer: https://www.internalpointers.com/post/squash-commits-into-one-git. Use `git push --force origin [branch-name], but this isn't great... aim to avoid rebasing and squashing with by using git commit --amend in the first place.
 alias gs='git status'
 alias gss='git status -s' # git status --short
@@ -244,7 +244,7 @@ alias gbranches='git for-each-ref --format="%(refname:short)" refs/' # list all 
 alias gbranches_raw='{branches=$(gbranches); echo ${branches//origin\/};}' # list all branches, sans 'origin/' prefic
 
 ## Git (helper-assisted)
-alias ga.='gcd; ga .; cd -'
+alias ga.='gcd; ga .; gs; cd -'
 ### compare current branch to master on github website
 alias ghbc='{CURRENT_BRANCH=$(gbn); CURRENT_REPO=$(cut -d . -f 1 <<< $(cut -d : -f 2 <<< $(git config --get remote.origin.url))); o https://github.com/"$CURRENT_REPO"/compare/"$CURRENT_BRANCH";}'
 ### compare current branch to master on gitlab website
