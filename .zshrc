@@ -171,8 +171,9 @@ alias qa='tmux kill-server && exit' # kill all tmux sessions
 alias t8='tmuxinator'
 alias t8s='tmuxinator start'
 
-alias vimrc='nvim ~/.vimrc'
-alias zshrc='nvim ~/.zshrc'
+alias vc='nvim ~/.vimrc'
+alias zc='nvim ~/.zshrc'
+alias .zc='source ~/.zshrc'
 
 alias v='nvim'
 alias v.="nvim ."
@@ -384,3 +385,5 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
+# Import ad-hoc, untracked aliases
+source ./.scratch
