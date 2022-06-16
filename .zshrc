@@ -283,7 +283,16 @@ alias glprv='glmrv'
 alias glprc='ghmrv'
 
 ## Azure DevOps CLI
-alias ado='az devops'
+alias azprc='az repos pr create --open --draft'
+alias azprl='az repos pr list -o table --creator cpalmieri@microsoft.com'
+alias azpr#='git rev-parse --abbrev-ref HEAD |  \
+                xargs az repos pr list -s | \
+                grep pullRequestId | \
+                sed -n "s/^.*[^0-9]\([0-9][0-9]*\).*/\1/p"'
+function azprv() {
+    PR_NUMBER=`azpr#`
+    open -na "Google Chrome" --args "https://dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack/pullrequest/$PR_NUMBER"
+}
 
 # ================ #
 # Project-specific #
@@ -389,4 +398,4 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 # Import ad-hoc, untracked aliases
-source ./.scratch
+source ~/.files/.scratch
