@@ -282,15 +282,27 @@ alias glmrc='glab mr create'
 alias glprv='glmrv'
 alias glprc='ghmrv'
 
-## Azure DevOps CLI
+## Azure DevOps (ADO) CLI
 alias azprc='az repos pr create --open --draft'
 alias azprl='az repos pr list -o table --creator cpalmieri@microsoft.com'
 alias azpr#='git rev-parse --abbrev-ref HEAD |  \
                 xargs az repos pr list -s | \
                 grep pullRequestId | \
                 sed -n "s/^.*[^0-9]\([0-9][0-9]*\).*/\1/p"'
+# View a pull request on ADO web
+#
+# $1 - The pull request number (PR#). If this argument is not supplied,
+#      defaults to the first PR# associated with the current branch.
+#
+# Examples
+#   azprv
+#   azprv 12345
 function azprv() {
-    PR_NUMBER=`azpr#`
+    if [ -z "$1" ]; then
+        PR_NUMBER=`azpr#`
+    else
+        PR_NUMBER="$1"
+    fi
     open -na "Google Chrome" --args "https://dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack/pullrequest/$PR_NUMBER"
 }
 
