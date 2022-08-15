@@ -138,7 +138,9 @@ alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
 
 # Misc
-alias l='pwd && ls -lAh'
+alias l='ls'
+alias la='pwd && ls -lAh'
+alias ll='pwd && ls -lAh'
 alias cl='clear; pwd && ls -lAh'
 alias cp='cp -i'
 alias mv='mv -i'
