@@ -255,6 +255,7 @@ alias glbc='{CURRENT_BRANCH=$(gbn); CURRENT_REPO=$(cut -d / -f 2,3 <<< $(cut -d 
 ### misc
 alias gbnc='gbn | copy'
 alias gpu='gbn | xargs git push --set-upstream origin'
+alias glag='gl | ag'
 function gac() { ga. ; gcm "$@" }
 function gacp() { ga. ; gcm "$@" ; gp }
 function gacpu() { ga. ; gcm "$@" ; gpu }
