@@ -119,6 +119,13 @@ function lag() {
     ls -lAh | ag $*
 }
 
+# Navigate to a directory, print the current path, and list files.
+# Requires `setopt auto_cd` (cd by directly typing directory name).
+function cd() {
+    $*;
+    pwd && ls -lAh;
+}
+
 # Web search
 alias es=explainshell
 alias gg=google
@@ -139,7 +146,6 @@ alias dv="cd ~/dev/"
 
 # Misc
 alias l='pwd && ls -lAh'
-alias cl='clear; pwd && ls -lAh'
 alias cp='cp -i'
 alias mv='mv -i'
 alias x='xargs'
