@@ -369,6 +369,8 @@ alias cr1a="cr1; yarn workspace content-repo-api dev"
 alias cr1f="cr1; yarn workspace portal dev"
 alias cr1b="cr1; yarn workspace portal-backend start:ts"
 
+alias adocs='chrome https://dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack'
+alias ado='adocs'
 alias ghcs="o https://github.com/clipchamp/clipchamp-stack"
 alias ghcr="o https://github.com/clipchamp/content-repository"
 
