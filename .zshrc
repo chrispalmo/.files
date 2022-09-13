@@ -184,6 +184,8 @@ alias .zc='source ~/.zshrc'
 alias v='nvim'
 alias v.="nvim ."
 
+alias chrome='open -na "Google Chrome" --args' # example usage: chrome "https://example.xyz"
+
 # Git
 alias ghcp="o https://github.com/chrispalmo"
 
