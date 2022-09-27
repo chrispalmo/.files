@@ -246,7 +246,7 @@ function gcm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit -m $COMMI
 function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m $COMMIT_MESSAGE } || git commit }
 function gcamp () { MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam $MESSAGE }
 
-alias gcd='cd $(git rev-parse --show-toplevel)' # cd to repo root
+alias gcd='$(git rev-parse --show-toplevel)' # cd to repo root
 alias gbn="git rev-parse --abbrev-ref HEAD" # return current branch name
 alias gfiles='echo "$(git ls-files --others --exclude-standard ; git diff --name-only; git diff --staged --name-only)"' # list modified files
 alias gbranches='git for-each-ref --format="%(refname:short)" refs/' # list all branches
