@@ -146,6 +146,7 @@ alias dv="cd ~/dev/"
 
 # Misc
 alias l='pwd && ls -lAh'
+alias lc='clear && pwd && ls -lAh'
 alias cp='cp -i'
 alias mv='mv -i'
 alias x='xargs'
