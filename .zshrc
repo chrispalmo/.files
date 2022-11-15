@@ -264,9 +264,9 @@ alias glbc='{CURRENT_BRANCH=$(gbn); CURRENT_REPO=$(cut -d / -f 2,3 <<< $(cut -d 
 alias gbnc='gbn | copy'
 alias gpu='gbn | xargs git push --set-upstream origin'
 alias glag='gl | ag'
-function gac() { ga. ; gcm "$@" }
-function gacp() { ga. ; gcm "$@" ; gp }
-function gacpu() { ga. ; gcm "$@" ; gpu }
+function gac() { ga. ; gcm "$@"; gs }
+function gacp() { ga. ; gcm "$@" ; gp; gs }
+function gacpu() { ga. ; gcm "$@" ; gpu; gs }
 ### fzf
 alias gaf='gcd ; gfiles | fzf8 | xargs git add ; cd -' # fzf-assisted git add
 alias gbdf='gcd ; gbranches_raw | fzf8 | xargs git branch --delete' # fzf-assisted git delete branch
