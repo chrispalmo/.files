@@ -255,7 +255,7 @@ alias gbranches='git for-each-ref --format="%(refname:short)" refs/' # list all 
 alias gbranches_raw='{branches=$(gbranches); echo ${branches//origin\/};}' # list all branches, sans 'origin/' prefic
 
 ## Git (helper-assisted)
-alias ga.='gcd; ga .; gs; cd -'
+alias ga.='gcd; ga .; gs; -'
 ### compare current branch to master on github website
 alias ghbc='{CURRENT_BRANCH=$(gbn); CURRENT_REPO=$(cut -d . -f 1 <<< $(cut -d : -f 2 <<< $(git config --get remote.origin.url))); o https://github.com/"$CURRENT_REPO"/compare/"$CURRENT_BRANCH";}'
 ### compare current branch to master on gitlab website
@@ -336,8 +336,8 @@ alias cc2="make --directory=$CS2 --no-print-directory --"
 alias cc3="make --directory=$CS3 --no-print-directory --"
 
 alias cs1="deactivate_venv; cd $CS1"
-alias cs1f="cs1; pwd; git status; cc1 start-create-webapp"
-alias cs1b="cs1; pwd; git status; cc1 start-create-backend"
+alias cs1f="cs1; pwd; git status; cc1 start-create"
+alias cs1b="cs1; pwd; git status; cc1 start-backend"
 alias cs1install="cs1; yarn setup:install-requirements"
 alias cs1installClean="cs1; yarn setup:install-requirements;"
 alias cs1clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs1; git lfs pull; cs1install"
@@ -346,8 +346,8 @@ alias cs1test="cs1; gcd && cd apps/create && yarn test:file"
 alias t8cs1="t8 start cs1"
 
 alias cs2="deactivate_venv; cd $CS2"
-alias cs2f="cs2; pwd; git status; cc2 start-create-webapp"
-alias cs2b="cs2; pwd; git status; cc2 start-create-backend"
+alias cs2f="cs2; pwd; git status; cc2 start-create"
+alias cs2b="cs2; pwd; git status; cc2 start-backend"
 alias cs2install="cs2; yarn setup:install-requirements;"
 alias cs2installClean="cs2; yarn setup:install-requirements;"
 alias cs2clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs2; git lfs pull; cs2install"
@@ -356,8 +356,8 @@ alias cs2test="cs2; gcd && cd apps/create && yarn test:file"
 alias t8cs2="t8 start cs2"
 
 alias cs3="deactivate_venv; cd $CS3"
-alias cs3f="cs3; pwd; git status; cc3 start-create-webapp"
-alias cs3b="cs3; pwd; git status; cc3 start-create-backend"
+alias cs3f="cs3; pwd; git status; cc3 start-create"
+alias cs3b="cs3; pwd; git status; cc3 start-backend"
 alias cs3install="cs3; yarn setup:install-requirements"
 alias cs3installClean="cs3; yarn setup:install-requirements;"
 alias cs3clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs3; git lfs pull; cs3install"
