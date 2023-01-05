@@ -244,9 +244,9 @@ alias grnc="git-redo-next-commit"
 
 ## Git helpers
 alias fzf8="fzf -m --height=8"
-function gcm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit -m $COMMIT_MESSAGE } || git commit }
-function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m $COMMIT_MESSAGE } || git commit }
-function gcamp () { MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam $MESSAGE }
+function gcm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit -m $COMMIT_MESSAGE } || git commit ; git status}
+function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m $COMMIT_MESSAGE } || git commit ; git status}
+function gcamp () { MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam $MESSAGE ; git status}
 
 alias gcd='$(git rev-parse --show-toplevel)' # cd to repo root
 alias gbn="git rev-parse --abbrev-ref HEAD" # return current branch name
@@ -335,7 +335,7 @@ alias cc1="make --directory=$CS1 --no-print-directory --"
 alias cc2="make --directory=$CS2 --no-print-directory --"
 alias cc3="make --directory=$CS3 --no-print-directory --"
 
-alias cs1="deactivate_venv; cd $CS1"
+alias cs1="deactivate_venv; $CS1"
 alias cs1f="cs1; pwd; git status; cc1 start-create"
 alias cs1b="cs1; pwd; git status; cc1 start-backend"
 alias cs1install="cs1; yarn setup:install-requirements"
@@ -345,7 +345,7 @@ alias cs1e2e="cs1; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
 alias cs1test="cs1; gcd && cd apps/create && yarn test:file"
 alias t8cs1="t8 start cs1"
 
-alias cs2="deactivate_venv; cd $CS2"
+alias cs2="deactivate_venv; $CS2"
 alias cs2f="cs2; pwd; git status; cc2 start-create"
 alias cs2b="cs2; pwd; git status; cc2 start-backend"
 alias cs2install="cs2; yarn setup:install-requirements;"
@@ -355,7 +355,7 @@ alias cs2e2e="cs2; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
 alias cs2test="cs2; gcd && cd apps/create && yarn test:file"
 alias t8cs2="t8 start cs2"
 
-alias cs3="deactivate_venv; cd $CS3"
+alias cs3="deactivate_venv; $CS3"
 alias cs3f="cs3; pwd; git status; cc3 start-create"
 alias cs3b="cs3; pwd; git status; cc3 start-backend"
 alias cs3install="cs3; yarn setup:install-requirements"
