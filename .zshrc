@@ -378,8 +378,8 @@ alias ado="adoprs"
 alias ghcs="chrome 'https://github.com/clipchamp/clipchamp-stack'"
 alias ghcr="chrome 'https://github.com/clipchamp/content-repository'"
 
-alias csgs="cs1; gs; cs2; gs; cs3; gs"
-alias csinstall"cs1; gomu; cs1install; cs2; gomu; cs2install; cs3; gomu; cs3install"
+alias csgs="cs1; pwd; gs; echo; cs2; pwd; gs; echo; cs3; pwd; gs; echo"
+alias csinstall="csgs; cs1; gomu; cs1install; cs2; gomu; cs2install; cs3; gomu; cs3install"
 
 # ==== #
 # Path #
