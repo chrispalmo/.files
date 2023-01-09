@@ -44,7 +44,6 @@ set cursorline
 set encoding=utf-8 nobomb
 set ignorecase smartcase "when searching with / ignore case unless uppercase is used
 set nobackup
-set nowrap
 set nospell
 set number
 set ruler
@@ -54,8 +53,21 @@ set incsearch
 set hlsearch
 set relativenumber
 set nojoinspaces "one space instead of two when doing gq
-set textwidth=80
 set suffixesadd=.js
+
+function Writer()
+    set wrap
+    set textwidth=0
+    set linebreak
+endfunction
+
+function Coder()
+    set nowrap
+    set textwidth=80
+    set nolinebreak
+endfunction
+
+call Writer()
 
 "swap
 set directory=~/.vim/swaps
