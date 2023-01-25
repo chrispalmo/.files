@@ -189,19 +189,20 @@ alias v.="nvim ."
 alias chrome='open -na "Google Chrome" --args' # example usage: chrome "https://example.xyz"
 
 # Git
-alias ghcp="o https://github.com/chrispalmo"
+alias ghcp='o https://github.com/chrispalmo'
 
 ## Git standards
 alias ga='git add'
 alias gb='git branch' # list branches
 alias gba='git branch -a' # list all branches
-alias gbd="git branch --delete"
-alias gbdr="git push origin --delete" # delete remote branch. use: gbdr [branch-name]
+alias gbd='git branch --delete'
+alias gbdr='git push origin --delete' # delete remote branch. use: gbdr [branch-name]
+alias gbl='git branch --list'
 alias gcnv='git commit --no-verify'
 alias gcp='git cherry-pick'
 alias gc='git commit'
-alias gca='git commit --amend ' # overwrite last commit
-alias gcnv="git commit --no-verify"
+alias gca='git commit --amend' # overwrite last commit
+alias gcnv='git commit --no-verify'
 alias gd='git diff'
 alias gdn='git diff --name-only'
 alias gds='git diff --staged'
