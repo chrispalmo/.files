@@ -1,5 +1,7 @@
 # .files
 
+The unsung hero of my digital life, my personal .files repository. A trove of scripts and configs that transforms any computer into a familiar friend. 
+
 ## install deps
 
 ```
