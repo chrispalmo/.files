@@ -189,6 +189,10 @@ alias v.="nvim ."
 
 alias chrome='open -na "Google Chrome" --args' # example usage: chrome "https://example.xyz"
 
+# Yarn
+alias y='yarn'
+alias ys='yarn start'
+
 # Git
 alias ghcp='o https://github.com/chrispalmo'
 
