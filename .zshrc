@@ -192,6 +192,8 @@ alias chrome='open -na "Google Chrome" --args' # example usage: chrome "https://
 # Yarn
 alias y='yarn'
 alias ys='yarn start'
+alias yt='yarn test'
+alias ytw='yarn test:watch'
 
 # Git
 alias ghcp='o https://github.com/chrispalmo'
