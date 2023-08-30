@@ -105,6 +105,10 @@ function stackoverflow() {
     open -na "Google Chrome" --args "https://www.google.com/search?q=site:stackoverflow.com $*"
 }
 
+# Add aliases on the fly
+function add { echo "alias $@" >> $HOME/.zshrc; source $HOME/.zshrc;}
+function adds { echo "alias $@" >> $HOME/.scratch; source $HOME/.zshrc;}
+
 # Make new directory and navitgate into it
 function mcd() { mkdir -p $1 && cd $1 }
 
@@ -439,3 +443,4 @@ source ~/.files/.scratch
 alias TorusClient='export DYLD_FALLBACK_LIBRARY_PATH="/Library/Scripts/Torus/Mac/lib:/lib:/usr/local/lib:/usr/lib:";/usr/local/bin/pwsh -NoLogo -NoExit -File /Library/Scripts/Torus/TorusClient.ps1'
 alias TorusClientSudo='export DYLD_FALLBACK_LIBRARY_PATH="/Library/Scripts/Torus/Mac/lib:/lib:/usr/local/lib:/usr/lib:";sudo /usr/local/bin/pwsh -NoLogo -NoExit -File /Library/Scripts/Torus/TorusClient.ps1'
 alias torus='export DYLD_FALLBACK_LIBRARY_PATH="/Library/Scripts/Torus/Mac/lib:/lib:/usr/local/lib:/usr/lib:";/usr/local/bin/pwsh -NoLogo -NoExit -File /Library/Scripts/Torus/TorusClient.ps1'
+
