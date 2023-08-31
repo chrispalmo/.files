@@ -281,15 +281,15 @@ function gac() { ga. ; gcm "$@"; gs }
 function gacp() { ga. ; gcm "$@" ; gp; gs }
 function gacpu() { ga. ; gcm "$@" ; gpu; gs }
 ### fzf
-alias gaf='gcd ; gfiles | fzf8 | xargs git add ; cd -' # fzf-assisted git add
+alias gaf='gcd ; gfiles | fzf8 | xargs git add ; gs; -' # fzf-assisted git add
 alias gbdf='gcd ; gbranches_raw | fzf8 | xargs git branch --delete' # fzf-assisted git delete branch
 alias gbdrf='gcd ; gbranches_raw | fzf8 | xargs git push origin --delete' # fzf-assisted git delete remote branch
-alias gdf='gcd ; gfiles | fzf8 | xargs git diff ; cd -' # fzf-assisted git diff
-alias gdsf='gcd ; gfiles | fzf8 | xargs git diff --staged ; cd -' # fzf-assisted git diff
-alias gof='gcd ; gfiles | fzf8 | xargs git checkout ; cd -' # fzf-assisted git checkout
+alias gdf='gcd ; gfiles | fzf8 | xargs git diff ; -' # fzf-assisted git diff
+alias gdsf='gcd ; gfiles | fzf8 | xargs git diff --staged ; -' # fzf-assisted git diff
+alias gof='gcd ; gfiles | fzf8 | xargs git checkout ; gs; -' # fzf-assisted git checkout
 alias gobf='gbranches_raw | fzf8 | xargs git checkout' # fzf-assisted git checkout branch
-alias grf='gcd ; git diff --staged --name-only | fzf -m --height=8 | xargs git reset ; cd -'
-alias grmf='gcd ; git diff --name-only --diff-filter=U | fzf -m --height=8 | xargs git rm ; cd -'
+alias grf='gcd ; git diff --staged --name-only | fzf -m --height=8 | xargs git reset ; gs; -'
+alias grmf='gcd ; git diff --name-only --diff-filter=U | fzf -m --height=8 | xargs git rm ; gs; -'
 
 ## Github CLI
 alias ghprv='gh pr view --web'
