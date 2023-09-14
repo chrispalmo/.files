@@ -344,6 +344,8 @@ CR3=~/dev/cr3
 
 export MS_ALIAS=cpalmieri
 
+alias t8cs="t8 start cs"
+
 alias cc1="make --directory=$CS1 --no-print-directory --"
 alias cc2="make --directory=$CS2 --no-print-directory --"
 alias cc3="make --directory=$CS3 --no-print-directory --"
