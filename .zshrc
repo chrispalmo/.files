@@ -1,3 +1,5 @@
+
+
 # zsh
 # https://wiki.gentoo.org/wiki/Zsh/Guide
 autoload -U colors compinit promptinit
@@ -442,7 +444,7 @@ fi
 source ~/.files/.scratch
 
 # MSFT Torus
-alias TorusClient='export DYLD_FALLBACK_LIBRARY_PATH="/Library/Scripts/Torus/Mac/lib:/lib:/usr/local/lib:/usr/lib:";/usr/local/bin/pwsh -NoLogo -NoExit -File /Library/Scripts/Torus/TorusClient.ps1'
-alias TorusClientSudo='export DYLD_FALLBACK_LIBRARY_PATH="/Library/Scripts/Torus/Mac/lib:/lib:/usr/local/lib:/usr/lib:";sudo /usr/local/bin/pwsh -NoLogo -NoExit -File /Library/Scripts/Torus/TorusClient.ps1'
-alias torus='export DYLD_FALLBACK_LIBRARY_PATH="/Library/Scripts/Torus/Mac/lib:/lib:/usr/local/lib:/usr/lib:";/usr/local/bin/pwsh -NoLogo -NoExit -File /Library/Scripts/Torus/TorusClient.ps1'
+
+
+source ~/.torusrc
 
