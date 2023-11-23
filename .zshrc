@@ -1,5 +1,3 @@
-
-
 # zsh
 # https://wiki.gentoo.org/wiki/Zsh/Guide
 autoload -U colors compinit promptinit
@@ -215,7 +213,6 @@ alias gcnv='git commit --no-verify'
 alias gcp='git cherry-pick'
 alias gc='git commit'
 alias gca='git commit --amend' # overwrite last commit
-alias gcnv='git commit --no-verify'
 alias gd='git diff'
 alias gdn='git diff --name-only'
 alias gds='git diff --staged'
@@ -260,6 +257,7 @@ alias grnc="git-redo-next-commit"
 ## Git helpers
 alias fzf8="fzf -m --height=8"
 function gcm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit -m $COMMIT_MESSAGE } || git commit ; git status}
+function gcnvm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --no-verify -m $COMMIT_MESSAGE } || git commit ; git status}
 function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m $COMMIT_MESSAGE } || git commit ; git status}
 function gcamp () { MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam $MESSAGE ; git status}
 
@@ -282,6 +280,9 @@ alias glag='gl | ag'
 function gac() { ga. ; gcm "$@"; gs }
 function gacp() { ga. ; gcm "$@" ; gp; gs }
 function gacpu() { ga. ; gcm "$@" ; gpu; gs }
+function gacnvp() { ga. ; gcnvm "$@" ; gp; gs }
+function gacnvpu() { ga. ; gcnvm "$@" ; gpu; gs }
+
 ### fzf
 alias gaf='gcd ; gfiles | fzf8 | xargs git add ; gs; -' # fzf-assisted git add
 alias gbdf='gcd ; gbranches_raw | fzf8 | xargs git branch --delete' # fzf-assisted git delete branch
@@ -425,7 +426,6 @@ _fzf_comprun() {
   esac
 }
 
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/cp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -444,7 +444,4 @@ fi
 source ~/.files/.scratch
 
 # MSFT Torus
-
-
 source ~/.torusrc
-
