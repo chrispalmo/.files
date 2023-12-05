@@ -147,6 +147,7 @@ alias dt="cd ~/Desktop/"
 alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
 alias notes="cd '~/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/'"
+alias nt="notes"
 
 # Misc
 alias l='pwd && ls -lAh'
