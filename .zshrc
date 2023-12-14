@@ -342,7 +342,7 @@ function azprv() {
 # anki-gen
 alias ags="dv; cd anki-gen; ys"
 
-# Clipchamp
+# cc-stack
 CS1=~/dev/cs1
 CS2=~/dev/cs2
 CS3=~/dev/cs3
