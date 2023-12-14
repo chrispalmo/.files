@@ -88,6 +88,14 @@ safe_rm()
     done
 }
 
+# Rapid note-taking
+adhd() {
+  local timestamp=$(date "+%Y%m%d-%H%M")
+  local note="$*"
+  local log_file="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log"
+  echo "$timestamp $note\n$(cat $log_file)" > $log_file
+}
+
 # Web search
 function explainshell() {
     open -na "Google Chrome" --args "https://explainshell.com/explain?cmd=$*"
