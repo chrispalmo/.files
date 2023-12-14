@@ -211,6 +211,7 @@ alias gbd='git branch --delete'
 alias gbdr='git push origin --delete' # delete remote branch. use: gbdr [branch-name]
 alias gbl='git branch --list'
 alias gcnv='git commit --no-verify'
+alias gcnv='git commit --no-verify -m'
 alias gcp='git cherry-pick'
 alias gc='git commit'
 alias gca='git commit --amend' # overwrite last commit
@@ -338,6 +339,9 @@ function azprv() {
 # Project-specific #
 # ================ #
 
+# anki-gen
+alias ags="dv; cd anki-gen; ys"
+
 # Clipchamp
 CS1=~/dev/cs1
 CS2=~/dev/cs2
@@ -357,7 +361,7 @@ alias cc3="make --directory=$CS3 --no-print-directory --"
 alias cs1="deactivate_venv; $CS1; pwd"
 alias cs1f="cs1; pwd; git status; cc1 start-create"
 # alias cs1b="cs1; pwd; git status; cc1 start-backend"
-alias cs1b="cs1; pwd; git status; podman machine start; yarn bazelisk run //apps/create:backend_docker;"
+alias cs1b='cs1; pwd; git status; podman rm -f $(podman ps -aq); podman machine start; yarn bazelisk run //apps/create:backend_docker;'
 alias cs1install="cs1; cc1 install-requirements"
 alias cs1clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs1; git lfs pull; cs1install"
 alias cs1e2e="cs1; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
@@ -367,7 +371,7 @@ alias t8cs1="t8 start cs1"
 alias cs2="deactivate_venv; $CS2; pwd"
 alias cs2f="cs2; pwd; git status; cc2 start-create"
 # alias cs2b="cs2; pwd; git status; cc2 start-backend"
-alias cs2b="cs2; pwd; git status; podman machine start; yarn bazelisk run //apps/create:backend_docker;"
+alias cs2b='cs2; pwd; git status; podman rm -f $(podman ps -aq); podman machine start; yarn bazelisk run //apps/create:backend_docker;'
 alias cs2install="cs2; cc2 install-requirements"
 alias cs2clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs2; git lfs pull; cs2install"
 alias cs2e2e="cs2; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
@@ -377,7 +381,7 @@ alias t8cs2="t8 start cs2"
 alias cs3="deactivate_venv; $CS3; pwd"
 alias cs3f="cs3; pwd; git status; cc3 start-create"
 # alias cs3b="cs3; pwd; git status; cc3 start-backend"
-alias cs3b="cs3; pwd; git status; podman machine start; yarn bazelisk run //apps/create:backend_docker;"
+alias cs3b='cs3; pwd; git status; podman rm -f $(podman ps -aq); podman machine start; yarn bazelisk run //apps/create:backend_docker;'
 alias cs3install="cs3; cc3 install-requirements"
 alias cs3clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs3; git lfs pull; cs3install"
 alias cs3e2e="cs3; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
