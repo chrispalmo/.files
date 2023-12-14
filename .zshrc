@@ -95,6 +95,7 @@ adhd() {
   local log_file="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log"
   echo "$timestamp $note\n$(cat $log_file)" > $log_file
 }
+alias adhdp="cat '/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log'"
 
 # Web search
 function explainshell() {
