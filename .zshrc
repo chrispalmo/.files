@@ -60,6 +60,27 @@ zle -N zle-keymap-select
 # Functions & Aliases #
 # =================== #
 
+# Function to query ChatGPT via CLI.
+# remember to add the below line to '~/.files/.scratch':
+# export OPENAI_API_KEY="$YOUR_API_KEY"
+ask_gpt() {
+  if [ -z "$1" ]; then echo "Error: No input provided." && return 1; fi
+  local API_ENDPOINT="https://api.openai.com/v1/chat/completions"
+  local RESPONSE=$(curl -s -X POST "$API_ENDPOINT" -H "Content-Type: application/json" -H "Authorization: Bearer $OPENAI_API_KEY" --data "{\"model\": \"gpt-4\", \"messages\": [{\"role\": \"user\", \"content\": \"$1\"}]}")
+  local PARSED_RESPONSE=$(echo $RESPONSE | jq -r '.choices[0].message.content')
+  if [ "$PARSED_RESPONSE" = "null" ]; then echo "Error or no response from API. Raw response was: $RESPONSE" && return 2; else echo $PARSED_RESPONSE; fi
+}
+alias ask="ask_gpt"
+
+# Rapid note-taking
+adhd() {
+  local timestamp=$(date "+%Y%m%d-%H%M")
+  local note="$*"
+  local log_file="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log"
+  echo "$timestamp $note\n$(cat $log_file)" > $log_file
+}
+alias adhdp="cat '/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log'"
+
 # Safe rm procedure
 safe_rm()
 {
@@ -87,15 +108,6 @@ safe_rm()
         fi
     done
 }
-
-# Rapid note-taking
-adhd() {
-  local timestamp=$(date "+%Y%m%d-%H%M")
-  local note="$*"
-  local log_file="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log"
-  echo "$timestamp $note\n$(cat $log_file)" > $log_file
-}
-alias adhdp="cat '/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log'"
 
 # Web search
 function explainshell() {
