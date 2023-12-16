@@ -81,7 +81,12 @@ adhd() {
   local note="$*"
   echo "$timestamp $note\n$(cat $LOG_FILE_PATH)" > $LOG_FILE_PATH
 }
-alias adhdp="cat '$LOG_FILE_PATH'"
+adhdp() {
+  local DEFAULT_NUM_LINES=10
+  if [[ "$1" == "--all" ]] || [[ "$1" == "-a" ]]; then cat "$LOG_FILE_PATH"
+  elif [[ "$1" =~ ^[0-9]+$ ]]; then head -n "$1" "$LOG_FILE_PATH"
+  else head -n $DEFAULT_NUM_LINES "$LOG_FILE_PATH"; fi
+}
 
 # Safe rm procedure
 safe_rm()
