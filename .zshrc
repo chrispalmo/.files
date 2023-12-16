@@ -75,18 +75,31 @@ ask_gpt() {
 alias ask="ask_gpt"
 
 # Rapid note-taking
-local LOG_FILE_PATH="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log"
+local NOTE_FILE_PATH="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log"
+# print notes
+adhdp() {
+  local DEFAULT_NUM_LINES=5
+  if [[ "$1" == "--all" ]] || [[ "$1" == "-a" ]]; then 
+    cat "$NOTE_FILE_PATH"
+  elif [[ "$1" =~ ^[0-9]+$ ]]; then 
+    tail -n "$1" "$NOTE_FILE_PATH"
+  elif [[ -z "$1" ]]; then
+    tail -n $DEFAULT_NUM_LINES "$NOTE_FILE_PATH"
+  fi
+}
+# add note
 adhd() {
+  if [[ -z "$*" ]]; then
+    echo "Please provide a note to add."
+    return 1
+  fi
   local timestamp=$(date "+%Y%m%d-%H%M")
   local note="$*"
-  echo "$timestamp $note\n$(cat $LOG_FILE_PATH)" > $LOG_FILE_PATH
+  echo "$timestamp $note" >> $NOTE_FILE_PATH
+  adhdp
 }
-adhdp() {
-  local DEFAULT_NUM_LINES=10
-  if [[ "$1" == "--all" ]] || [[ "$1" == "-a" ]]; then cat "$LOG_FILE_PATH"
-  elif [[ "$1" =~ ^[0-9]+$ ]]; then head -n "$1" "$LOG_FILE_PATH"
-  else head -n $DEFAULT_NUM_LINES "$LOG_FILE_PATH"; fi
-}
+# undo last note
+alias adhdz="sed -i '' -e '\$ d' '$NOTE_FILE_PATH'; adhdp"
 
 # Safe rm procedure
 safe_rm()
