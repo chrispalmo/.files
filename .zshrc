@@ -79,9 +79,9 @@ local NOTE_FILE_PATH="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclas
 # print notes
 adhdp() {
   local DEFAULT_NUM_LINES=5
-  if [[ "$1" == "--all" ]] || [[ "$1" == "-a" ]]; then 
+  if [[ "$1" == "--all" ]] || [[ "$1" == "-a" ]]; then
     cat "$NOTE_FILE_PATH"
-  elif [[ "$1" =~ ^[0-9]+$ ]]; then 
+  elif [[ "$1" =~ ^[0-9]+$ ]]; then
     tail -n "$1" "$NOTE_FILE_PATH"
   elif [[ -z "$1" ]]; then
     tail -n $DEFAULT_NUM_LINES "$NOTE_FILE_PATH"
@@ -398,6 +398,7 @@ alias t8cs="t8 start cs"
 alias cc1="make --directory=$CS1 --no-print-directory --"
 alias cc2="make --directory=$CS2 --no-print-directory --"
 alias cc3="make --directory=$CS3 --no-print-directory --"
+alias cc4="make --directory=$CS4 --no-print-directory --"
 
 alias cs1="deactivate_venv; $CS1; pwd"
 alias cs1f="cs1; pwd; git status; cc1 start-create"
@@ -428,6 +429,16 @@ alias cs3clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/
 alias cs3e2e="cs3; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
 alias cs3test="cs3; gcd && cd apps/create && yarn test:file"
 alias t8cs3="t8 start cs3"
+
+alias cs4="deactivate_venv; $CS4; pwd"
+alias cs4f="cs4; pwd; git status; cc4 start-create"
+# alias cs4b="cs4; pwd; git status; cc4 start-backend"
+alias cs4b='cs4; pwd; git status; podman rm -f $(podman ps -aq); podman machine start; yarn bazelisk run //apps/create:backend_docker;'
+alias cs4install="cs4; cc4 install-requirements"
+alias cs4clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs4; git lfs pull; cs4install"
+alias cs4e2e="cs4; cd tools/test/create_e2e && npm run create-e2e:dev && gcd"
+alias cs4test="cs4; gcd && cd apps/create && yarn test:file"
+alias t8cs4="t8 start cs4"
 
 alias cr1="cd $CR1"
 alias cr1install="cr1; yarn install; cd libs/content; yarn prepare; cr1; cd libs/content-hooks; yarn prepare; cr1"
