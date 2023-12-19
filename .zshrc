@@ -387,6 +387,8 @@ alias ags="dv; cd anki-gen; ys"
 CS1=~/dev/cs1
 CS2=~/dev/cs2
 CS3=~/dev/cs3
+CS4=~/dev/cs4
+
 CR1=~/dev/cr1
 CR2=~/dev/cr2
 CR3=~/dev/cr3
@@ -402,7 +404,7 @@ alias cc4="make --directory=$CS4 --no-print-directory --"
 
 alias cs1="deactivate_venv; $CS1; pwd"
 alias cs1f="cs1; pwd; git status; cc1 start-create"
-# alias cs1b="cs1; pwd; git status; cc1 start-backend"
+S1
 alias cs1b='cs1; pwd; git status; podman rm -f $(podman ps -aq); podman machine start; yarn bazelisk run //apps/create:backend_docker;'
 alias cs1install="cs1; cc1 install-requirements"
 alias cs1clone="cd ~/dev; git clone https://${MS_ALIAS?}@dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack cs1; git lfs pull; cs1install"
