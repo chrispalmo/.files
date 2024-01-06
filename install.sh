@@ -39,11 +39,16 @@ defaults import com.manytricks.Moom ~/.files/.moom/moom.plist
 [ ! -e ~/.files/.vim/colors/dark-plus ] &&
   git clone https://github.com/dunstontc/vim-vscode-theme.git ~/.files/.vim/colors/dark-plus
 
-
 # install vundle
 [ ! -e ~/.tmux/plugins/Vundle.vim ] &&
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # install vim plugins with vundle
 vim +PluginInstall +qall
+
+# set default location for screenshots
+SCREENSHOT_PATH=~/Desktop/screenshots
+[ ! -d $SCREENSHOT_PATH ] && mkdir $SCREENSHOT_PATH
+defaults write com.apple.screencapture location $SCREENSHOT_PATH
+killall SystemUIServer
 
