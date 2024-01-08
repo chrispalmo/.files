@@ -75,7 +75,7 @@ ask_gpt() {
 alias ask="ask_gpt"
 
 # Rapid note-taking
-local NOTE_FILE_PATH="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.log"
+local NOTE_FILE_PATH="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.md"
 # print notes
 adhdp() {
   local DEFAULT_NUM_LINES=5
