@@ -31,28 +31,6 @@ brew install n
 n 16
 npm install --global yarn
 
-brew tap homebrew/cask
-brew tap homebrew/cask-versions
-brew tap adoptopenjdk/openjdk
-brew install --cask adoptopenjdk13
-brew install --cask temurin17
-
-# clipchamp (minus `gcloud` items in `macOS.md`)
-brew install redis
-brew install jq
-brew install pkg-config
-brew install cairo
-brew install pango
-brew install libpng
-brew install jpeg
-brew install giflib
-brew install librsvg
-
-# ADO cli
-brew install azure-cli
-az extension add --name azure-devops
-az devops configure --defaults organization=https://dev.azure.com/onedrive project=Clipchamp
-
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
 still reference x86_64 executabled
 softwareupdate --install-rosetta:wq
@@ -77,19 +55,8 @@ open "https://www.signal.org/download/macos/"
 open "https://www.dropbox.com/install"
 open "https://www.google.com/drive/download/"
 
-# 2fa
-open "https://authy.com/download/"
-
-# ms device enrollment
-open
-"https://docs.microsoft.com/en-us/mem/intune/user-help/enroll-your-device-in-intune-macos-cp"
-open "https://go.microsoft.com/fwlink/?linkid=853070"
-
 # media
 open "https://www.spotify.com/au/download/mac/"
-
-# clipchamp
-open "https://docs.docker.com/desktop/mac/install/"
 
 brew install --cask karabiner-elements
 brew install --cask meetingbar
