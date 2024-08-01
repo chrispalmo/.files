@@ -28,7 +28,7 @@ brew link python@3.12
 
 # package management
 brew install n
-n 16
+n 22
 npm install --global yarn
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
