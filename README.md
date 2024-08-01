@@ -23,8 +23,8 @@ brew install the_silver_searcher
 brew install tmux
 brew install tmuxinator
 brew install tree
-brew install python@3.9
-brew link python@3.9
+brew install python@3.12
+brew link python@3.12
 
 # package management
 brew install n
