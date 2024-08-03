@@ -187,7 +187,7 @@ alias db="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
 alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
-alias notes="/home/chrispalmo/Dropbox/apps/byword/notes"
+alias notes="/home/chrispalmo/Dropbox/apps/byword/notes."
 alias nt="notes"
 
 # Misc
@@ -233,6 +233,8 @@ alias .zc='source ~/.zshrc'
 
 alias v='nvim'
 alias v.="nvim ."
+
+alias c.='code .'
 
 alias chrome='open -na "Google Chrome" --args' # example usage: chrome "https://example.xyz"
 
@@ -433,6 +435,3 @@ fi
 
 # Import ad-hoc, untracked aliases
 source ~/.files/.scratch
-
-# MSFT Torus
-source ~/.torusrc
