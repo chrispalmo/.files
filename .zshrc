@@ -75,7 +75,7 @@ ask_gpt() {
 alias ask="ask_gpt"
 
 # Rapid note-taking
-local NOTE_FILE_PATH="/Users/cp/Library/Mobile Documents/N39PJFAFEV~com~metaclassy~byword/Documents/notes/src/adhd.md"
+local NOTE_FILE_PATH=""
 # print notes
 adhdp() {
   local DEFAULT_NUM_LINES=5
@@ -213,7 +213,8 @@ alias batf='fzf | xargs bat'
 alias trash='safe_rm'
 alias t='safe_rm'
 alias grep='grep -H -n'
-alias cwd='pwd | tr -d "\r\n" | pbcopy' # copy working directory
+# alias cwd='pwd | tr -d "\r\n" | pbcopy' # copy working directory
+alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
 alias h='history'
 alias ppath="echo $PATH | tr ':' '\n'" # print path
 alias q="exit"
@@ -386,6 +387,9 @@ alias ags="dv; cd anki-gen; ys"
 # ==== #
 # Path #
 # ==== #
+
+# neovim
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # n
 # To avoid using sudo and sudo-related permission issues, set the N_PREFIX location to something in the user library.
