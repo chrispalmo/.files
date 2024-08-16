@@ -187,7 +187,7 @@ alias db="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
 alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
-alias notes="/home/chrispalmo/Dropbox/apps/byword/notes."
+alias notes="~/Dropbox/apps/byword/notes"
 alias nt="notes"
 
 # Misc
