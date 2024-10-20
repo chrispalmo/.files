@@ -197,6 +197,7 @@ alias cl='lc'
 alias cp='cp -i'
 alias mv='mv -i'
 alias x='xargs'
+alias e='echo'
 
 alias ..="cd .."
 alias ..2="cd ../../"
@@ -220,7 +221,8 @@ alias ppath="echo $PATH | tr ':' '\n'" # print path
 alias q="exit"
 alias c="clear"
 
-alias copy="tr -d '\n' | pbcopy" # remove carriage return at the end of pbcopy on a mac.
+#alias copy="tr -d '\n' | pbcopy" # remove carriage return at the end of pbcopy on a mac.
+alias copy="tr -d '\n' | xclip" # remove carriage return at the end of pbcopy on a mac.
 alias d="deactivate_venv"
 
 alias qa='tmux kill-server && exit' # kill all tmux sessions
