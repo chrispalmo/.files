@@ -1,7 +1,5 @@
 # .files
 
-The unsung hero of my digital life. A trove of scripts and configs that transforms any computer into a familiar friend. 
-
 ## install deps
 
 ```
@@ -32,7 +30,7 @@ n 22
 npm install --global yarn
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
-still reference x86_64 executabled
+still reference x86_64 executable
 softwareupdate --install-rosetta:wq
 ```
 
