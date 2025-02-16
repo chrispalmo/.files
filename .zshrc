@@ -60,46 +60,30 @@ zle -N zle-keymap-select
 # Functions & Aliases #
 # =================== #
 
-# Function to query ChatGPT via CLI.
-# remember to add the below line to '~/.files/.scratch':
-# export OPENAI_API_KEY="$YOUR_API_KEY"
-ask_gpt() {
-  if [ -z "$1" ]; then echo "Error: No input provided." && return 1; fi
-  local API_ENDPOINT="https://api.openai.com/v1/chat/completions"
-  local RESPONSE=$(curl -s -X POST "$API_ENDPOINT" -H "Content-Type: application/json" -H "Authorization: Bearer $OPENAI_API_KEY" --data "{\"model\": \"gpt-4\", \"messages\": [{\"role\": \"user\", \"content\": \"$1\"}]}")
-  # Uncomment the next line for debugging
-  echo "Raw response: $RESPONSE"
-  local PARSED_RESPONSE=$(echo $RESPONSE | jq -r '.choices[0].message.content')
-  if [ "$PARSED_RESPONSE" = "null" ]; then echo "Error or no response from API. Raw response was: $RESPONSE" && return 2; else echo $PARSED_RESPONSE; fi
-}
-alias ask="ask_gpt"
+# Get names of all public repos from a github user (provided as first arg)
+alias gh_repos='function _gh_repos() { 
+    if [ -z "$1" ]; then 
+        echo "Usage: gh_repos <github_username>"
+        return 1
+    fi
+    response=$(curl -s "https://api.github.com/users/$1/repos?per_page=100")
+    if [[ $(echo "$response" | jq -r "type") != "array" ]]; then
+        echo "Error: User '$1' not found or has no public repositories."
+        return 1
+    fi
+    echo "$response" | jq -r ".[].name"
+}; _gh_repos'
 
-# Rapid note-taking
-local NOTE_FILE_PATH=""
-# print notes
-adhdp() {
-  local DEFAULT_NUM_LINES=5
-  if [[ "$1" == "--all" ]] || [[ "$1" == "-a" ]]; then
-    cat "$NOTE_FILE_PATH"
-  elif [[ "$1" =~ ^[0-9]+$ ]]; then
-    tail -n "$1" "$NOTE_FILE_PATH"
-  elif [[ -z "$1" ]]; then
-    tail -n $DEFAULT_NUM_LINES "$NOTE_FILE_PATH"
-  fi
+# Clone a GitHub repo via SSH.
+# Usage: git_clone_ssh <github_user> <repo_name>
+# Example: git_clone_ssh chrispalmo my-repo → git clone git@github.com:chrispalmo/my-repo.git
+function git_clone_ssh() {
+    if [ $# -ne 2 ]; then
+        echo "Usage: git_clone_ssh <github_user> <repo_name>"
+        return 1
+    fi
+    git clone "git@github.com:$1/$2.git"
 }
-# add note
-adhd() {
-  if [[ -z "$*" ]]; then
-    echo "Please provide a note to add."
-    return 1
-  fi
-  local timestamp=$(date "+%Y%m%d-%H%M")
-  local note="$*"
-  echo "$timestamp $note" >> $NOTE_FILE_PATH
-  adhdp
-}
-# undo last note
-alias adhdz="sed -i '' -e '\$ d' '$NOTE_FILE_PATH'; adhdp"
 
 # Safe rm procedure
 safe_rm()
