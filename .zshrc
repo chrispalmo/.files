@@ -16,7 +16,7 @@ function set-prompt {
     VENV=""
     if [ -n "$VIRTUAL_ENV" ]; then
         BN=$(basename $VIRTUAL_ENV)
-        VENV="($BN)"
+	VENV="%{%B%F{39}%}($BN)%{%f%b%} "
     fi
     BRANCH=$(echo "${vcs_info_msg_0_}" | sed 's/.*(//;s/).*//;')
     PROMPT="$VENV%{$fg_bold[green]%}%n%{$reset_color%} %{$fg_bold[yellow]%}%~%{$fg_bold[magenta]%} ${BRANCH}%{$reset_color%} $1 "
