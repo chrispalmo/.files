@@ -1,4 +1,3 @@
- zsh
 # https://wiki.gentoo.org/wiki/Zsh/Guide
 autoload -U colors compinit promptinit
 colors
@@ -405,8 +404,10 @@ _fzf_comprun() {
   esac
 }
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/cp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/path.zsh.inc'; fi
+# The next line sets up pyenv for managing multiple Python versions
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/cp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/completion.zsh.inc'; fi
