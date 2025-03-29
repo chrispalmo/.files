@@ -1,4 +1,4 @@
-# zsh
+ zsh
 # https://wiki.gentoo.org/wiki/Zsh/Guide
 autoload -U colors compinit promptinit
 colors
@@ -75,11 +75,11 @@ alias gh_repos='function _gh_repos() {
 }; _gh_repos'
 
 # Clone a GitHub repo via SSH.
-# Usage: git_clone_ssh <github_user> <repo_name>
-# Example: git_clone_ssh chrispalmo my-repo → git clone git@github.com:chrispalmo/my-repo.git
-function git_clone_ssh() {
+# Usage: gh_clone_ssh <github_user> <repo_name>
+# Example: gh_clone_ssh chrispalmo my-repo → git clone git@github.com:chrispalmo/my-repo.git
+function gh_clone_ssh() {
     if [ $# -ne 2 ]; then
-        echo "Usage: git_clone_ssh <github_user> <repo_name>"
+        echo "Usage: gh_clone_ssh <github_user> <repo_name>"
         return 1
     fi
     git clone "git@github.com:$1/$2.git"
