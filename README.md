@@ -26,7 +26,7 @@ brew link python@3.12
 
 # package management
 brew install n
-n 22
+n stable # install latest LTS version of node
 npm install --global yarn
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
@@ -43,11 +43,8 @@ open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
 open "https://code.visualstudio.com/Download"
 open "https://www.google.com/chrome/"
 
-# comms
-open "https://apps.apple.com/au/app/slack-for-desktop/id803453959?mt=12{
-open "https://zoom.us/support/download?os=mac"
-open "https://www.microsoft.com/en-au/microsoft-teams/download-app"
-open "https://www.signal.org/download/macos/"
+brew install --cask karabiner-elements
+brew install --cask meetingbar
 
 # storage
 open "https://www.dropbox.com/install"
@@ -56,12 +53,11 @@ open "https://www.google.com/drive/download/"
 # media
 open "https://www.spotify.com/au/download/mac/"
 
-brew install --cask karabiner-elements
-brew install --cask meetingbar
+# comms
+open "https://apps.apple.com/au/app/slack-for-desktop/id803453959?mt=12"
+open "https://zoom.us/support/download?os=mac"
+open "https://www.microsoft.com/en-au/microsoft-teams/download-app"
 ```
-
-*ensure Moom is closed before running `install.sh` below*
-
 
 ## install useful key bindings and fuzzy completion
 
@@ -91,11 +87,14 @@ git clone git@github.com:chrispalmo/.files.git ~/.files
 ```
 
 ## import terminal profile
+
 1. open Terminal
 2. `Terminal` --> `preferences` --> `[...]` --> `import` --->
    `.terminal/terminal-profile.terminal`
 
 ## install
+
+*ensure Moom is closed before running `install.sh`!*
 
 ```
 ~/.files/install.sh
