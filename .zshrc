@@ -171,7 +171,6 @@ alias dt="cd ~/Desktop/"
 alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
 alias notes="~/Dropbox/apps/byword/notes"
-alias nt="notes"
 
 # Misc
 alias l='pwd && ls -lAh'
@@ -197,17 +196,24 @@ alias batf='fzf | xargs bat'
 alias trash='safe_rm'
 alias t='safe_rm'
 alias grep='grep -H -n'
-# alias cwd='pwd | tr -d "\r\n" | pbcopy' # copy working directory
-alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
+
+if command -v pbcopy &>/dev/null; then
+  # mac
+  copy() { tr -d '\n' | pbcopy; }
+elif command -v xclip &>/dev/null; then
+  # linux (X11)
+  copy() { tr -d '\n' | xclip -selection clipboard; }
+fi
+alias cwd='pwd | copy'
+
 alias h='history'
 alias ppath="echo $PATH | tr ':' '\n'" # print path
 alias q="exit"
 alias c="clear"
 
-#alias copy="tr -d '\n' | pbcopy" # remove carriage return at the end of pbcopy on a mac.
-alias copy="tr -d '\n' | xclip" # remove carriage return at the end of pbcopy on a mac.
 alias d="deactivate_venv"
 
+# Tmux
 alias qa='tmux kill-server && exit' # kill all tmux sessions
 alias t8='tmuxinator'
 alias t8s='tmuxinator start'
@@ -229,7 +235,7 @@ alias ys='yarn start'
 alias yt='yarn test'
 alias ytw='yarn test:watch'
 
-# Git
+# Github
 alias ghcp='o https://github.com/chrispalmo'
 
 ## Git standards
@@ -363,13 +369,6 @@ function azprv() {
     fi
     open -na "Google Chrome" --args "https://dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack/pullrequest/$PR_NUMBER"
 }
-
-# ================ #
-# Project-specific #
-# ================ #
-
-# anki-gen
-alias ags="dv; cd anki-gen; ys"
 
 # ==== #
 # Path #
