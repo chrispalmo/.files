@@ -83,6 +83,21 @@ function gh_clone_ssh() {
     fi
     git clone "git@github.com:$1/$2.git"
 }
+alias ghc='gh_clone_ssh'
+
+# Fuzzy-select and clone a public GitHub repo via SSH.
+# Usage: gh_fzf_clone <github_user>
+# Lists all public repos for <github_user>, lets you fzf-pick one, then clones it to current dir.
+function gh_fzf_clone() {
+    if [ -z "$1" ]; then
+        echo "Usage: gh_fzf_clone <github_username>"
+        return 1
+    fi
+    local user="$1"
+    local repo=$(gh_repos $user | ag . | fzf --prompt="Select repo to clone: ")
+    [[ -n "$repo" ]] && gh_clone_ssh "$user" "$repo"
+}
+alias ghcf='gh_fzf_clone'
 
 # Safe rm procedure
 safe_rm()
