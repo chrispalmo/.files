@@ -57,10 +57,8 @@ open "https://www.google.com/drive/download/"
 # media
 open "https://www.spotify.com/au/download/mac/"
 
-# comms
-open "https://apps.apple.com/au/app/slack-for-desktop/id803453959?mt=12"
-open "https://zoom.us/support/download?os=mac"
-open "https://www.microsoft.com/en-au/microsoft-teams/download-app"
+# torrents
+open "https://transmissionbt.com/download.html"
 ```
 
 ## install useful key bindings and fuzzy completion
