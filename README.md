@@ -4,8 +4,8 @@
 
 ```
 # brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/cp/.zprofile
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew update
@@ -22,7 +22,7 @@ brew install tmux
 brew install tmuxinator
 brew install tree
 brew install python@3.12
-brew link python@3.12
+brew link --overwrite python@3.12
 
 # package management
 brew install n
