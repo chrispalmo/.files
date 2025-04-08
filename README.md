@@ -52,7 +52,7 @@ brew install --cask meetingbar
 
 # storage
 open "https://www.dropbox.com/install"
-open "https://www.google.com/drive/download/"
+open "https://support.google.com/a/users/answer/13022292?hl=en"
 
 # media
 open "https://www.spotify.com/au/download/mac/"
