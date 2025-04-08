@@ -26,12 +26,12 @@ brew link python@3.12
 
 # package management
 brew install n
-n stable # install latest LTS version of node
+sudo n stable # install latest LTS version of node
 npm install --global yarn
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
 still reference x86_64 executable
-softwareupdate --install-rosetta
+softwareupdate --install-rosetta --agree-to-license
 ```
 
 ## other apps and settings
