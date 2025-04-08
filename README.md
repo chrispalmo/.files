@@ -91,8 +91,8 @@ git clone git@github.com:chrispalmo/.files.git ~/.files
 ## import terminal profile
 
 1. open Terminal
-2. `Terminal` --> `preferences` --> `[...]` --> `import` --->
-   `.terminal/terminal-profile.terminal`
+2. `Terminal` --> `settings` --> `profiles` --> `(...)` --> `import` --->
+   `.terminal/terminal-profile.terminal` (Press `⌘ + Shift + .` to see hidden files)
 
 ## install
 
