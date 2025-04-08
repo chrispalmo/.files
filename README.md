@@ -26,7 +26,11 @@ brew link python@3.12
 
 # package management
 brew install n
-sudo n stable # install latest LTS version of node
+export N_PREFIX="$HOME/.n"
+export PATH="$N_PREFIX/bin:$PATH"
+mkdir -p "$N_PREFIX"
+n stable
+
 npm install --global yarn
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
