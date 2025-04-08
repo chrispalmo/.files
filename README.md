@@ -31,7 +31,7 @@ npm install --global yarn
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
 still reference x86_64 executable
-softwareupdate --install-rosetta:wq
+softwareupdate --install-rosetta
 ```
 
 ## other apps and settings
