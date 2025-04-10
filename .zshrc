@@ -67,23 +67,12 @@ kbb-min() { [[ "$(kbb-get)" == "0.01" ]] && kbb 0 || kbb 0.01; }
 kbb-up() { kbb $(echo "$(kbb-get) + 0.2" | bc | awk '{print ($1>1.0)?"1.0":$1}'); }
 kbb-down() { kbb $(echo "$(kbb-get) - 0.2" | bc | awk '{print ($1<0)?"0":$1}'); }
 
-# Get names of all public repos from a github user (provided as first arg)
-alias gh_repos='function _gh_repos() { 
-    if [ -z "$1" ]; then 
-        echo "Usage: gh_repos <github_username>"
-        return 1
-    fi
-    response=$(curl -s "https://api.github.com/users/$1/repos?per_page=100")
-    if [[ $(echo "$response" | jq -r "type") != "array" ]]; then
-        echo "Error: User '$1' not found or has no public repositories."
-        return 1
-    fi
-    echo "$response" | jq -r ".[].name"
-}; _gh_repos'
+# Get names of all repos (public and private) from a github user (provided as first arg)
+alias gh_repos='gh repo list "$1" --limit 1000 --json name --jq ".[].name"'
 
 # Clone a GitHub repo via SSH.
 # Usage: gh_clone_ssh <github_user> <repo_name>
-# Example: gh_clone_ssh chrispalmo my-repo → git clone git@github.com:chrispalmo/my-repo.git
+# Example: gh_clone_ssh chrispalmo my-repo
 function gh_clone_ssh() {
     if [ $# -ne 2 ]; then
         echo "Usage: gh_clone_ssh <github_user> <repo_name>"
@@ -93,17 +82,12 @@ function gh_clone_ssh() {
 }
 alias ghc='gh_clone_ssh'
 
-# Fuzzy-select and clone a public GitHub repo via SSH.
-# Usage: gh_fzf_clone <github_user>
-# Lists all public repos for <github_user>, lets you fzf-pick one, then clones it to current dir.
+# Fuzzy-select and clone a GitHub repo via SSH.
 function gh_fzf_clone() {
-    if [ -z "$1" ]; then
-        echo "Usage: gh_fzf_clone <github_username>"
-        return 1
-    fi
-    local user="$1"
-    local repo=$(gh_repos $user | ag . | fzf --prompt="Select repo to clone: ")
-    [[ -n "$repo" ]] && gh_clone_ssh "$user" "$repo"
+    local user=${1:-chrispalmo}
+    [[ "$1" == "" ]] && echo "No username provided, defaulting to chrispalmo"
+    local repo=$(gh repo list "$user" --limit 1000 --json name,url --jq ".[] | select(.url | contains(\"$user\")) | .name" | fzf --prompt="Select repo to clone: ")
+    [[ -n "$repo" ]] && gh repo clone "$user/$repo"
 }
 alias ghcf='gh_fzf_clone'
 
