@@ -36,6 +36,9 @@ npm install --global yarn
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
 still reference x86_64 executable
 softwareupdate --install-rosetta --agree-to-license
+
+brew tap rakalex/mac-brightnessctl
+brew install mac-brightnessctl
 ```
 
 ## other apps and settings

@@ -59,6 +59,14 @@ zle -N zle-keymap-select
 # Functions & Aliases #
 # =================== #
 
+# Keyboard brightness controls
+alias kbb='mac-brightnessctl'
+kbb-get() { kbb | awk '{print $3}'; }
+kbb-max() { kbb 1.0; }
+kbb-min() { [[ "$(kbb-get)" == "0.01" ]] && kbb 0 || kbb 0.01; }
+kbb-up() { kbb $(echo "$(kbb-get) + 0.2" | bc | awk '{print ($1>1.0)?"1.0":$1}'); }
+kbb-down() { kbb $(echo "$(kbb-get) - 0.2" | bc | awk '{print ($1<0)?"0":$1}'); }
+
 # Get names of all public repos from a github user (provided as first arg)
 alias gh_repos='function _gh_repos() { 
     if [ -z "$1" ]; then 
