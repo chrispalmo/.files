@@ -28,7 +28,7 @@
 git config --global core.excludesfile ~/.gitignore_global
 
 # import moom config
-defaults import com.manytricks.Moom ~/.files/.moom/moom.plist
+defaults import com.manytricks.Moom ~/.files/.config/moom/moom.plist
 
 # install tmux plugins
 [ ! -e ~/.tmux/plugins/tpm ] &&
