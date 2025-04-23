@@ -429,5 +429,8 @@ fi
 export N_PREFIX="$HOME/.n"
 export PATH="$N_PREFIX/bin:$PATH"
 
-# Import ad-hoc, untracked aliases
+# Import keys
+source ~/.files/.keys
+
+# Import ad-hoc aliases
 source ~/.files/.scratch
