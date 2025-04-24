@@ -429,6 +429,9 @@ fi
 export N_PREFIX="$HOME/.n"
 export PATH="$N_PREFIX/bin:$PATH"
 
+# Codename Goose
+export PATH="$HOME/.local/bin:$PATH"
+
 # Import keys
 source ~/.files/.keys
 
