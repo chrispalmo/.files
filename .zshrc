@@ -297,7 +297,53 @@ alias grnc="git-redo-next-commit"
 
 ## Git helpers
 alias fzf8="fzf -m --height=8"
-function gcm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit -m "$COMMIT_MESSAGE" } || git commit ;}
+function gcm() {
+    # If arguments are provided, use them as the commit message
+    if [[ -n "$@" ]]; then
+        git commit -m "$@"
+        return
+    fi
+
+    # Check if sgpt is installed
+    if ! command -v sgpt &>/dev/null; then
+        echo "sgpt is not installed. Opening the standard editor for the commit message."
+        git commit
+        return
+    fi
+
+    # Combine unstaged and staged diffs
+    local diff_output
+    diff_output=$(git diff && git diff --cached)
+
+    # If no diff is available, fallback to the standard editor
+    if [[ -z "$diff_output" ]]; then
+        echo "No changes detected. Opening the standard editor for the commit message."
+        git commit
+        return
+    fi
+
+    # Generate a commit message using sgpt
+    local commit_message
+    commit_message=$(echo "$diff_output" | sgpt "Generate a concise and meaningful one-line commit message describing these changes. Reply only with the suggested message. Do not enclose it in quotation marks" 2>/dev/null)
+
+    # Fallback if sgpt fails or generates an empty response
+    if [[ -z "$commit_message" ]]; then
+        echo "sgpt failed to generate a commit message. Opening the standard editor."
+        git commit
+        return
+    fi
+
+    # Display the suggested commit message with formatting
+    echo -e "\n\033[1;34mSuggested commit message:\033[0m"
+    echo -e "\033[1;32m$commit_message\033[0m\n"
+    echo -n "Press Enter to accept, or type an alternative commit message: "
+
+    # Prompt the user for input
+    read -r user_input
+
+    # Use the suggested message if the user presses Enter, otherwise use the provided input
+    git commit -m "${user_input:-$commit_message}"
+}
 function gcnvm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --no-verify -m "$COMMIT_MESSAGE" } || git commit --no-verify ;}
 function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m "$COMMIT_MESSAGE" } || git commit --amend ;}
 function gcamp () { COMMIT_MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam "$COMMIT_MESSAGE" ;}
