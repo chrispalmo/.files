@@ -489,11 +489,11 @@ if [[ -n "$BUFFER" ]]; then
 fi
 }
 zle -N _sgpt_zsh
-bindkey ^l _sgpt_zsh
+bindkey '^o' _sgpt_zsh
+# Shell-GPT integration ZSH v0.2
 
 # Import keys
 source ~/.files/.keys
 
 # Import ad-hoc aliases
 source ~/.files/.scratch
-
