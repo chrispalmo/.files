@@ -141,7 +141,7 @@ function add { echo "alias $@" >> $HOME/.zshrc; source $HOME/.zshrc;}
 function adds { echo "alias $@" >> $HOME/.scratch; source $HOME/.zshrc;}
 
 # Make new directory and navitgate into it
-function mcd() { mkdir -p $1 && cd $1 }
+function mcd() { mkdir -p $1 && cd $1 ;}
 
 # Virtual environment deactivation
 function deactivate_venv() {
@@ -297,16 +297,16 @@ alias grnc="git-redo-next-commit"
 
 ## Git helpers
 alias fzf8="fzf -m --height=8"
-function gcm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit -m "$COMMIT_MESSAGE" } || git commit ; git status}
-function gcnvm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --no-verify -m "$COMMIT_MESSAGE" } || git commit --no-verify; git status}
-function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m "$COMMIT_MESSAGE" } || git commit --amend ; git status}
-function gcamp () { COMMIT_MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam "$COMMIT_MESSAGE" ; git status}
+function gcm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit -m "$COMMIT_MESSAGE" } || git commit ;}
+function gcnvm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --no-verify -m "$COMMIT_MESSAGE" } || git commit --no-verify ;}
+function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m "$COMMIT_MESSAGE" } || git commit --amend ;}
+function gcamp () { COMMIT_MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam "$COMMIT_MESSAGE" ;}
 
 alias gcd='$(git rev-parse --show-toplevel)' # cd to repo root
 alias gbn="git rev-parse --abbrev-ref HEAD" # return current branch name
 alias gfiles='echo "$(git ls-files --others --exclude-standard ; git diff --name-only; git diff --staged --name-only)"' # list modified files
 alias gbranches='git for-each-ref --format="%(refname:short)" refs/' # list all branches
-alias gbranches_raw='{branches=$(gbranches); echo ${branches//origin\/};}' # list all branches, sans 'origin/' prefic
+alias gbranches_raw='{branches=$(gbranches); echo ${branches//origin\/};}' # list all branches, sans 'origin/' prefix
 
 ## Git (helper-assisted)
 alias ga.='gcd; ga .; gs; -'
@@ -318,11 +318,11 @@ alias glbc='{CURRENT_BRANCH=$(gbn); CURRENT_REPO=$(cut -d / -f 2,3 <<< $(cut -d 
 alias gbnc='gbn | copy'
 alias gpu='gbn | xargs git push --set-upstream origin'
 alias glag='gl | ag'
-function gac() { ga. ; gcm "$@"; gs }
-function gacp() { ga. ; gcm "$@" ; gp; gs }
-function gacpu() { ga. ; gcm "$@" ; gpu; gs }
-function gacnvp() { ga. ; gcnvm "$@" ; gp; gs }
-function gacnvpu() { ga. ; gcnvm "$@" ; gpu; gs }
+function gac() { ga. ; gcm "$@" ;}
+function gacp() { ga. ; gcm "$@" ; gp ;}
+function gacpu() { ga. ; gcm "$@" ; gpu ;}
+function gacnvp() { ga. ; gcnvm "$@" ; gp ;}
+function gacnvpu() { ga. ; gcnvm "$@" ; gpu ;}
 
 ### fzf
 alias gaf='gcd ; gfiles | fzf8 | xargs git add ; gs; -' # fzf-assisted git add
