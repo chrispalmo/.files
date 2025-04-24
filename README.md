@@ -24,6 +24,11 @@ brew install tree
 brew install python@3.12
 brew link --overwrite python@3.12
 
+brew install pipx
+pipx ensurepath
+pipx install shell-gpt
+sgpt --install-integration
+
 # package management
 brew install n
 export N_PREFIX="$HOME/.n"
