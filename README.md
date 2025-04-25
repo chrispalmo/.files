@@ -27,7 +27,7 @@ brew link --overwrite python@3.12
 brew install pipx
 pipx ensurepath
 pipx install shell-gpt
-sgpt --install-integration
+sgpt --install-integration # only run if _sgpt_zsh() not defined in .zshrc
 
 # package management
 brew install n
