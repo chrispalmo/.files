@@ -299,8 +299,8 @@ alias grnc="git-redo-next-commit"
 alias fzf8="fzf -m --height=8"
 function gcm() {
     # If arguments are provided, use them as the commit message
-    if [[ -n "$@" ]]; then
-        git commit -m "$@"
+    if [[ -n "$*" ]]; then
+        git commit -m "$*"
         return
     fi
 
