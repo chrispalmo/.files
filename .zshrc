@@ -370,6 +370,8 @@ function gacpu() { ga. ; gcm "$@" ; gpu ;}
 function gacnvp() { ga. ; gcnvm "$@" ; gp ;}
 function gacnvpu() { ga. ; gcnvm "$@" ; gpu ;}
 
+alias gtree='git ls-tree -r --name-only HEAD | tree --fromfile'
+
 ### fzf
 alias gaf='gcd ; gfiles | fzf8 | xargs git add ; gs; -' # fzf-assisted git add
 alias gbdf='gcd ; gbranches_raw | fzf8 | xargs git branch --delete' # fzf-assisted git delete branch
