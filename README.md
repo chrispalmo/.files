@@ -24,10 +24,11 @@ brew install tree
 brew install python@3.12
 brew link --overwrite python@3.12
 
+# shell-gpt <https://github.com/TheR1D/shell_gpt>
 brew install pipx
 pipx ensurepath
 pipx install shell-gpt
-sgpt --install-integration # only required if _sgpt_zsh() not defined in .zshrc
+sgpt --install-integration # only required if _sgpt_zsh() and zle shortcut binding not defined in .zshrc
 
 # package management
 brew install n
