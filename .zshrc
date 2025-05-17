@@ -172,6 +172,7 @@ alias .f="cd ~/.files/"
 alias df="cd ~/.files/"
 alias db="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
+alias gdrive='cd "/Users/cp/Google Drive/My Drive"'
 alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
 alias notes="~/Dropbox/apps/byword/notes"
@@ -324,7 +325,7 @@ function gcm() {
 
     # Generate a commit message using sgpt
     local commit_message
-    commit_message=$(echo "$diff_output" | sgpt "Generate a concise and meaningful one-line commit message \ 
+    commit_message=$(echo "$diff_output" | sgpt "Generate a concise and meaningful one-line commit message \
         describing these changes. Be as specific as possible while remaining within the on-line limit.\
         Reply only with the suggested message - do not enclose it in quotation marks" 2>/dev/null)
 
