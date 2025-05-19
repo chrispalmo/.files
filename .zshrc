@@ -326,7 +326,8 @@ function gcm() {
     # Generate a commit message using sgpt
     local commit_message
     commit_message=$(echo "$diff_output" | sgpt "Generate a concise and meaningful one-line commit message \
-        describing these changes. Be as specific as possible while remaining within the on-line limit.\
+        describing these changes. Be as specific as possible WITHOUT exceeding the on-line limit.\
+        Only state changes made, not why they were made. \
         Reply only with the suggested message - do not enclose it in quotation marks" 2>/dev/null)
 
     # Fallback if sgpt fails or generates an empty response
