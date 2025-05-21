@@ -1,0 +1,11 @@
+name: jamie
+root: /Users/cp/dev/jamie
+
+windows:
+  - dev:
+      layout: tiled
+      panes:
+        - make frontend-dev       # top-left
+        - make backend-dev        # top-right
+        - cd /Users/cp/dev/jamie  # bottom-left
+        - cd /Users/cp/dev/jamie  # bottom-right

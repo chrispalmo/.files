@@ -1,9 +1,0 @@
-name: cs2
-root: ~/dev/cs2
-windows:
-    - cs2:
-        layout: main-vertical
-        panes:
-            - cs2
-            - cs2f
-            - cs2b

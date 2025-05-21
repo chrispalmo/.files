@@ -1,9 +1,0 @@
-name: content1
-root: ~/dev/cs1
-windows:
-    - cs1:
-        layout: main-vertical
-        panes:
-            - cs1
-            - cs1f
-            - cs1b

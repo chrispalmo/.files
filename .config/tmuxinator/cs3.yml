@@ -1,9 +1,0 @@
-name: cs3
-root: ~/dev/cs3
-windows:
-    - cs3:
-        layout: main-vertical
-        panes:
-            - cs3
-            - cs3f
-            - cs3b
