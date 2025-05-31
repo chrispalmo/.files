@@ -264,11 +264,8 @@ alias gl='git log'
 alias glf='git log --name-only' # log includes list of files changed
 alias glm='git log --merge' # list of commits that conflict during merge
 alias gm='git merge'
-alias gmm='git merge master; git status'
 alias go='git checkout' # switch branch
 alias gob='git checkout -b' # create new branch, switch to it
-alias gom='(git show-ref --quiet refs/heads/master && git checkout master) || (git show-ref --quiet refs/heads/main && git checkout main) || echo "No master or main branch found."' # checkout main / master branch
-alias gomu='gom && git pull --rebase'
 alias go-='git checkout -'
 alias gp='git push'
 alias gpf='git push --force'
@@ -353,6 +350,25 @@ function gcm() {
 function gcnvm () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --no-verify -m "$COMMIT_MESSAGE" } || git commit --no-verify ;}
 function gcam () { [[ $@ != '' ]] && { COMMIT_MESSAGE="$@" ; git commit --amend -m "$COMMIT_MESSAGE" } || git commit --amend ;}
 function gcamp () { COMMIT_MESSAGE=$(git reflog -1 | sed 's/^.*: //') ; gcam "$COMMIT_MESSAGE" ;}
+get_default_branch() {
+  local branch
+  branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+
+  if [ -n "$branch" ]; then
+    echo "$branch"
+  elif git show-ref --quiet refs/heads/main; then
+    echo "main"
+  elif git show-ref --quiet refs/heads/master; then
+    echo "master"
+  else
+    echo "Error: No default branch found." >&2
+    return 1
+  fi
+}
+
+alias gmm='git merge $(get_default_branch); git status'
+alias gom='git checkout $(get_default_branch)'
+alias gomu='gom && git pull --rebase'
 
 alias gcd='$(git rev-parse --show-toplevel)' # cd to repo root
 alias gbn="git rev-parse --abbrev-ref HEAD" # return current branch name
