@@ -5,7 +5,11 @@ windows:
   - dev:
       layout: tiled
       panes:
-        - make frontend-dev       # top-left
-        - make backend-dev        # top-right
-        - cd /Users/cp/dev/jamie  # bottom-left
-        - cd /Users/cp/dev/jamie  # bottom-right
+        # top-left
+        - shell_command: cd frontend && yarn dev
+        # top-right
+        - shell_command: v ../jamie-meta/todo.md
+        # bottom-left
+        - shell_command: l
+        # bottom-right
+        - shell_command: l

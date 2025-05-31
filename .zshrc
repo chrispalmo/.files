@@ -314,7 +314,7 @@ function gcm() {
 
     # Combine unstaged and staged diffs
     local diff_output
-    diff_output=$(git diff && git diff --cached)
+    diff_output=$(git diff --staged)
 
     # If no diff is available, fallback to the standard editor
     if [[ -z "$diff_output" ]]; then
@@ -361,7 +361,7 @@ alias gbranches='git for-each-ref --format="%(refname:short)" refs/' # list all 
 alias gbranches_raw='{branches=$(gbranches); echo ${branches//origin\/};}' # list all branches, sans 'origin/' prefix
 
 ## Git (helper-assisted)
-alias ga.='gcd; ga .; gs; -'
+alias ga.='gcd; ga .; gs; cd -'
 ### compare current branch to master on github website
 alias ghbc='{CURRENT_BRANCH=$(gbn); CURRENT_REPO=$(cut -d . -f 1 <<< $(cut -d : -f 2 <<< $(git config --get remote.origin.url))); o https://github.com/"$CURRENT_REPO"/compare/"$CURRENT_BRANCH";}'
 ### compare current branch to master on gitlab website
@@ -386,7 +386,7 @@ alias gdf='gcd ; gfiles | fzf8 | xargs git diff ; -' # fzf-assisted git diff
 alias gdsf='gcd ; gfiles | fzf8 | xargs git diff --staged ; -' # fzf-assisted git diff
 alias gof='gcd ; gfiles | fzf8 | xargs git checkout ; gs; -' # fzf-assisted git checkout
 alias gobf='gbranches_raw | fzf8 | xargs git checkout' # fzf-assisted git checkout branch
-alias grf='gcd ; git diff --staged --name-only | fzf -m --height=8 | xargs git reset ; gs; -'
+alias grf='gcd ; git diff --staged --name-only | fzf -m --height=8 | xargs git reset ; gs; cd -'
 alias grmf='gcd ; git diff --name-only --diff-filter=U | fzf -m --height=8 | xargs git rm ; gs; -'
 
 ## Github CLI
