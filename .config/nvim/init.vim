@@ -1,4 +1,6 @@
 set nocompatible
+"set leader to space
+let mapleader = " "
 
 "disable this fkn autocomplete thing
 let g:omni_sql_no_default_maps = 1
@@ -92,9 +94,15 @@ set smartindent
 set hidden
 nmap <tab> :bnext<cr>
 nmap <s-tab> :bprevious<cr>
-nmap <leader>q :bp <bar> bd #<cr>
 nmap <leader>b :bufdo bd<cr>
 nmap <leader>h :hide<cr>
+
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+nnoremap <leader>d "_d
+
 nmap <c-t> :Files<cr>
 nmap <c-s> :Buffers<cr>
 
