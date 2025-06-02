@@ -183,6 +183,7 @@ alias lc='clear && pwd && ls -lAh'
 alias cl='lc'
 alias cp='cp -i'
 alias mv='mv -i'
+mvi() { mkdir -p "$(dirname "$2")" && mv -i "$1" "$2"; }
 alias x='xargs'
 alias e='echo'
 
