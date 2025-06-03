@@ -183,9 +183,10 @@ alias lc='clear && pwd && ls -lAh'
 alias cl='lc'
 alias cp='cp -i'
 alias mv='mv -i'
-mvc() { mkdir -p "$(dirname "$2")" && mv -i "$1" "$2"; }
-cpc() { mkdir -p "$(dirname "$2")" && cp -i "$1" "$2"; }
-tc() { mkdir -p "$(dirname "$1")" && touch "$1"; }
+mvpi() { mkdir -p "$(dirname "$2")" && mv -i "$1" "$2"; }
+cppi() { mkdir -p "$(dirname "$2")" && cp -i "$1" "$2"; }
+cppir() { mkdir -p "$(dirname "$2")" && cp -i -r "$1" "$2"; }
+tp() { mkdir -p "$(dirname "$1")" && touch "$1"; }
 alias x='xargs'
 alias e='echo'
 
