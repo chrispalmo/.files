@@ -188,11 +188,6 @@ vnoremap ) f)
 "emacs-inspired zz
 nnoremap <m-l> zz
 
-"common things to type
-inoremap <leader>p import pdb; pdb.set_trace()<esc>
-inoremap <leader>c console.log(
-inoremap <leader>d debugger;<esc>
-
 "clear whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
