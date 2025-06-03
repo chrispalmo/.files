@@ -184,6 +184,7 @@ alias cl='lc'
 alias cp='cp -i'
 alias mv='mv -i'
 mvc() { mkdir -p "$(dirname "$2")" && mv -i "$1" "$2"; }
+cpc() { mkdir -p "$(dirname "$2")" && cp -i "$1" "$2"; }
 tc() { mkdir -p "$(dirname "$1")" && touch "$1"; }
 alias x='xargs'
 alias e='echo'
