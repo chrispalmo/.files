@@ -189,6 +189,7 @@ cppir() { mkdir -p "$(dirname "$2")" && cp -i -r "$1" "$2"; }
 tp() { mkdir -p "$(dirname "$1")" && touch "$1"; }
 alias x='xargs'
 alias e='echo'
+alias pbc='pbcopy'
 
 alias ..="cd .."
 alias ..2="cd ../../"
@@ -395,8 +396,7 @@ function gacp() { ga. ; gcm "$@" ; gp ;}
 function gacpu() { ga. ; gcm "$@" ; gpu ;}
 function gacnvp() { ga. ; gcnvm "$@" ; gp ;}
 function gacnvpu() { ga. ; gcnvm "$@" ; gpu ;}
-
-alias gtree='git ls-tree -r --name-only HEAD | tree --fromfile'
+alias gtree='git ls-files --cached --others --exclude-standard | tree --fromfile'
 
 ### fzf
 alias gaf='gcd ; gfiles | fzf8 | xargs git add ; gs; -' # fzf-assisted git add
