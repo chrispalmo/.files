@@ -6,7 +6,7 @@ windows:
       layout: tiled
       panes:
         # top-left
-        - shell_command: cd frontend && yarn dev
+        - shell_command: cd app && yarn dev
         # top-right
         - shell_command: v ../jamie-meta/todo.md
         # bottom-left
