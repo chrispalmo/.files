@@ -70,26 +70,33 @@ kbb-down() { kbb $(echo "$(kbb-get) - 0.2" | bc | awk '{print ($1<0)?"0":$1}'); 
 # Get names of all repos (public and private) from a github user (provided as first arg)
 alias gh_repos='gh repo list "$1" --limit 1000 --json name --jq ".[].name"'
 
-# Clone a GitHub repo via SSH.
-# Usage: gh_clone_ssh <github_user> <repo_name>
-# Example: gh_clone_ssh chrispalmo my-repo
-function gh_clone_ssh() {
-    if [ $# -ne 2 ]; then
-        echo "Usage: gh_clone_ssh <github_user> <repo_name>"
-        return 1
-    fi
-    git clone "git@github.com:$1/$2.git"
+ghcf() {
+  # ghcf: Fuzzy-select and clone a GitHub repo via SSH.
+  # Usage:
+  #   ghcf [user] [-f folder]
+  # Examples:
+  #   ghcf
+  #   ghcf someuser
+  #   ghcf -f myfolder
+  #   ghcf someuser -f myfolder
+  u=chrispalmo; [ "$1" != "-f" ] && [ "$1" != "--folder" ] && [ -n "$1" ] && u=$1 && shift
+  [ "$1" = "-f" ] || [ "$1" = "--folder" ] && f="$2"
+  f="${f## }"  # Remove leading space if present
+  r=$(gh repo list "$u" --limit 1000 --json name --jq ".[].name" | fzf --prompt="Select repo to clone: ")
+  [ "$r" ] && gh repo clone "$u/$r" ${f:+"$f"}
 }
-alias ghc='gh_clone_ssh'
 
-# Fuzzy-select and clone a GitHub repo via SSH.
-function gh_fzf_clone() {
-    local user=${1:-chrispalmo}
-    [[ "$1" == "" ]] && echo "No username provided, defaulting to chrispalmo"
-    local repo=$(gh repo list "$user" --limit 1000 --json name,url --jq ".[] | select(.url | contains(\"$user\")) | .name" | fzf --prompt="Select repo to clone: ")
-    [[ -n "$repo" ]] && gh repo clone "$user/$repo"
+ghc() {
+  # ghc: Clone a GitHub repo via SSH.
+  # Usage:
+  #   ghc <user> <repo> [-f folder]
+  # Examples:
+  #   ghc chrispalmo repo-name
+  #   ghc chrispalmo repo-name -f mydir
+  [ $# -lt 2 ] && return 1
+  [ "$3" = "-f" ] || [ "$3" = "--folder" ] && git clone "git@github.com:$1/$2.git" "$4" && return
+  git clone "git@github.com:$1/$2.git"
 }
-alias ghcf='gh_fzf_clone'
 
 # Safe rm procedure
 safe_rm()
@@ -377,7 +384,9 @@ alias gomu='gom && git pull --rebase'
 
 alias gcd='$(git rev-parse --show-toplevel)' # cd to repo root
 alias gbn="git rev-parse --abbrev-ref HEAD" # return current branch name
-alias gfiles='echo "$(git ls-files --others --exclude-standard ; git diff --name-only; git diff --staged --name-only)"' # list modified files
+alias gfiles='git diff --name-only --cached; git diff --name-only; git ls-files --others --exclude-standard'
+alias gfiles-unstaged='git diff --name-only'
+alias gfiles-unstaged-untracked='(git diff --name-only; git ls-files --others --exclude-standard)'
 alias gbranches='git for-each-ref --format="%(refname:short)" refs/' # list all branches
 alias gbranches_raw='{branches=$(gbranches); echo ${branches//origin\/};}' # list all branches, sans 'origin/' prefix
 
@@ -399,14 +408,15 @@ function gacnvpu() { ga. ; gcnvm "$@" ; gpu ;}
 alias gtree='git ls-files --cached --others --exclude-standard | tree --fromfile'
 
 ### fzf
-alias gaf='gcd ; gfiles | fzf8 | xargs git add ; gs; -' # fzf-assisted git add
+alias gaf='gcd ; gfiles-unstaged-untracked | fzf8 | xargs git add ; gs; -' # fzf-assisted git add
 alias gbdf='gcd ; gbranches_raw | fzf8 | xargs git branch --delete' # fzf-assisted git delete branch
 alias gbdrf='gcd ; gbranches_raw | fzf8 | xargs git push origin --delete' # fzf-assisted git delete remote branch
-alias gdf='gcd ; gfiles | fzf8 | xargs git diff ; -' # fzf-assisted git diff
+alias gdf='gcd ; gfiles | fzf8 | xargs git diff --staged ; -' # fzf-assisted git diff
 alias gdsf='gcd ; gfiles | fzf8 | xargs git diff --staged ; -' # fzf-assisted git diff
-alias gof='gcd ; gfiles | fzf8 | xargs git checkout ; gs; -' # fzf-assisted git checkout
+alias gof='gcd; gfiles-unstaged | sort -u | fzf8 | xargs -r -I{} git checkout -- {}; gs; -'
 alias gobf='gbranches_raw | fzf8 | xargs git checkout' # fzf-assisted git checkout branch
-alias grf='gcd ; git diff --staged --name-only | fzf -m --height=8 | xargs git reset ; gs; cd -'
+alias grf='gcd ; git diff --staged --name-only | fzf -m --height=8 | xargs -r -I{} git reset -- {}; gs; cd -'
+
 alias grmf='gcd ; git diff --name-only --diff-filter=U | fzf -m --height=8 | xargs git rm ; gs; -'
 
 ## Github CLI
