@@ -1,0 +1,15 @@
+name: tikk
+root: /Users/cp/dev/tikk
+
+windows:
+  - dev:
+      layout: tiled
+      panes:
+        # top-left
+        - shell_command: l
+        # top-right
+        - shell_command: cd ../tikk-meta && v todo.md
+        # bottom-left
+        - shell_command: l
+        # bottom-right
+        - shell_command: cd ../tikk-meta

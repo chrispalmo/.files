@@ -12,4 +12,4 @@ windows:
         # bottom-left
         - shell_command: l
         # bottom-right
-        - shell_command: l
+        - shell_command: cd ../jamie-meta
