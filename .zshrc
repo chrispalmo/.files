@@ -182,7 +182,7 @@ alias dt="cd ~/Desktop/"
 alias gdrive='cd "/Users/cp/Google Drive/My Drive"'
 alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
-alias notes="~/Dropbox/apps/byword/notes/src"
+alias notes="~/Dropbox/apps/byword/notes"
 
 # Misc
 alias l='pwd && ls -lAh'
