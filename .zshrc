@@ -245,6 +245,7 @@ alias v='nvim'
 alias v.="nvim ."
 
 alias c.='code .'
+alias cs.='cursor .'
 
 alias chrome='open -na "Google Chrome" --args' # example usage: chrome "https://example.xyz"
 

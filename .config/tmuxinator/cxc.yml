@@ -1,0 +1,16 @@
+name: context-clone
+root: /Users/cp/dev/context-clone
+
+windows:
+  - dev:
+      layout: tiled
+      panes:
+        # top-left
+        - shell_command: cd app && yarn && yarn dev
+        # top-right
+        - shell_command: cd ../context-meta
+        # bottom-left
+        - shell_command: l
+        # bottom-right
+        - shell_command: cd ../context-meta
+
