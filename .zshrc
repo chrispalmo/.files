@@ -276,6 +276,7 @@ alias gds='git diff --staged'
 alias gdsn='gd --staged --name-only'
 alias gf='git fetch'
 alias gl='git log'
+alias gll='git log --oneline'
 alias glf='git log --name-only' # log includes list of files changed
 alias glm='git log --merge' # list of commits that conflict during merge
 alias gm='git merge'
