@@ -520,6 +520,9 @@ export PATH="$N_PREFIX/bin:$PATH"
 # Codename Goose
 export PATH="$HOME/.local/bin:$PATH"
 
+# Docker
+export PATH=$PATH:/Applications/Docker.app/Contents/Resources/bin
+
 # Shell-GPT integration ZSH v0.2
 _sgpt_zsh() {
 if [[ -n "$BUFFER" ]]; then
@@ -532,7 +535,7 @@ fi
 }
 zle -N _sgpt_zsh
 bindkey '^o' _sgpt_zsh
-# Shell-GPT integration ZSH v0.2
+# </Shell-GPT integration ZSH v0.2>
 
 # Import keys
 source ~/.files/.keys
