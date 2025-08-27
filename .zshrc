@@ -276,7 +276,6 @@ alias gds='git diff --staged'
 alias gdsn='gd --staged --name-only'
 alias gf='git fetch'
 alias gl='git log'
-alias gll='git log --oneline'
 alias glf='git log --name-only' # log includes list of files changed
 alias glm='git log --merge' # list of commits that conflict during merge
 alias gm='git merge'
@@ -308,6 +307,14 @@ alias git-undo-last-commit='git reset --soft HEAD~1'
 alias git-redo-next-commit='git reset ORIG_HEAD'
 alias gulc='git-undo-last-commit'
 alias grnc="git-redo-next-commit"
+gll() {
+# usage: gll OR gll n (to show latest n logs)
+  if [[ -n "$1" ]]; then
+    git log --oneline head -n "$1"
+  else
+    git log --oneline
+  fi
+}
 
 ## Git helpers
 alias fzf8="fzf -m --height=8"
