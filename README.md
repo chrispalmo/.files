@@ -13,16 +13,17 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 
 brew install bat
-brew install bc              # keyboard brightness helpers (kbb-up/kbb-down)
+brew install bc
 brew install fzf
 brew install git git-lfs
 brew install gh
+brew install jq
 brew install glab
 brew install neovim
 brew install pyenv
 brew install pyenv-virtualenv
 brew install ripgrep
-brew install the_silver_searcher  # provides `ag` — used by fzf default command and `lag`
+brew install the_silver_searcher
 brew install tmux
 brew install tmuxinator
 brew install tree
@@ -33,7 +34,7 @@ brew link --overwrite python@3.12
 brew install pipx
 pipx ensurepath
 pipx install shell-gpt
-# sgpt zle binding (^o) and gcm commit helper are already in .zshrc
+# sgpt zle binding (^o) and gcm commit helper are in .zshrc
 
 # package management
 brew install n
@@ -54,12 +55,10 @@ brew install mac-brightnessctl
 
 ### optional (work / per-machine)
 
-Install only if you use the related aliases in `.zshrc`:
-
 ```
-brew install --cask google-cloud-sdk   # gcloud completion in .zshrc
-brew install azure-cli                 # azpr* aliases
-brew install --cask docker             # Docker.app; .zshrc adds its bin to PATH
+brew install --cask google-cloud-sdk
+brew install azure-cli
+brew install --cask docker
 ```
 
 ## other apps and settings
@@ -125,27 +124,24 @@ git clone git@github.com:chrispalmo/.files.git ~/.files
 ~/.files/install.sh
 ```
 
-`install.sh` is idempotent — safe to re-run. It symlinks dotfiles, imports Moom config, bootstraps vim/nvim plugins, and sets the screenshot folder.
+`install.sh` is idempotent. Symlinks dotfiles, imports Moom, bootstraps vim plugins, sets screenshot folder.
 
 ## after install
 
-1. **Create `~/.files/.keys`** — gitignored file sourced by `.zshrc` for local env vars / secrets (can start empty).
-2. **Cursor user rules** — paste each `*.md` from `.config/cursor/rules/` into **Cursor Settings → Rules → User Rules** (see that folder’s README).
-3. **Cursor agent hooks** — clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` to merge `~/.cursor/hooks.json`.
-4. **tmux** — `.zshrc` auto-starts tmux in Terminal.app / iTerm only. Set `AUTO_TMUX=1` to enable elsewhere. Uncomment `run "~/.tmux/plugins/tpm/tpm"` in `.tmux.conf` if you want TPM plugins to load.
+1. `touch ~/.files/.keys ~/.files/.scratch`
+2. Cursor → **Shell Command: Install 'cursor' command in PATH** (VS Code too if you use `code` / `cnotes`)
+3. Paste each `*.md` from `.config/cursor/rules/` into **Cursor Settings → Rules → User Rules**
+4. Clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` for hooks
+5. Edit hardcoded paths in `.zshrc` / tmuxinator if needed (Dropbox, Google Drive, `~/dev`, work aliases)
+6. Set `AUTO_TMUX=1` to auto-start tmux outside Terminal/iTerm; uncomment TPM in `.tmux.conf` if wanted
 
 ## Cursor
 
-`install.sh` symlinks:
+Symlinked by `install.sh`:
 
-| Repo path | Installed to |
-|-----------|--------------|
-| `.config/cursor/User/settings.json` | `~/Library/Application Support/Cursor/User/settings.json` |
-| `.config/cursor/User/keybindings.json` | `~/Library/Application Support/Cursor/User/keybindings.json` |
-| `.config/cursor/commands/` | `~/.cursor/commands/` |
+- `.config/cursor/User/settings.json` → `~/Library/Application Support/Cursor/User/settings.json`
+- `.config/cursor/User/keybindings.json` → `~/Library/Application Support/Cursor/User/keybindings.json`
+- `.config/cursor/commands/` → `~/.cursor/commands/`
 
-**User rules** live as markdown in `.config/cursor/rules/` (see that folder’s README). After install, paste each rule into **Cursor Settings → Rules → User Rules**.
-
-**Agent hooks** (chat sync, etc.) are not in this repo. Clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` to merge `~/.cursor/hooks.json`.
-
-VS Code can keep using built-in Settings Sync; Cursor is managed here.
+User rules: markdown in `.config/cursor/rules/` — paste into Cursor manually.
+Hooks: [agent-chats](https://github.com/chrispalmo/agent-chats) repo, not dotfiles.
