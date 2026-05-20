@@ -442,7 +442,7 @@ alias ghprscpm='gh search prs "author:chrispalmo" "is:merged"'
 alias glmrv='glab mr view'
 alias glmrc='glab mr create'
 alias glprv='glmrv'
-alias glprc='ghmrv'
+alias glprc='glmrc'
 
 ## Azure DevOps (ADO) CLI
 alias azprc='az repos pr create --open --draft'
