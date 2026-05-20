@@ -475,11 +475,6 @@ function azprv() {
 # neovim
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
-# n
-# To avoid using sudo and sudo-related permission issues, set the N_PREFIX location to something in the user library.
-export N_PREFIX=~/.npm
-export PATH=$PATH:~/.npm/bin
-
 # vscode
 export PATH="/usr/local/bin/code:$PATH"
 
