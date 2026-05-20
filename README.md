@@ -24,7 +24,7 @@ git clone git@github.com:chrispalmo/.files.git ~/.files
 ## install deps
 
 ```
-~/.files/install-deps.sh          # --work adds gcloud, azure-cli, docker
+~/.files/install-deps.sh
 ```
 
 Then open a new terminal (pick up brew / pipx / n paths).
@@ -73,7 +73,7 @@ _⚠️ ensure Moom is closed before running `install.sh`!_
 2. Cursor → **Shell Command: Install 'cursor' command in PATH** (VS Code too if you use `code` / `cnotes`)
 3. Paste each `*.md` from `.config/cursor/rules/` into **Cursor Settings → Rules → User Rules**
 4. Clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` for hooks
-5. Edit hardcoded paths in `.zshrc` / tmuxinator if needed (Dropbox, Google Drive, `~/dev`, work aliases)
+5. Edit hardcoded paths in `.zshrc` / tmuxinator if needed (Dropbox, Google Drive, `~/dev`)
 6. Set `AUTO_TMUX=1` to auto-start tmux outside Terminal/iTerm; uncomment TPM in `.tmux.conf` if wanted
 
 ## Cursor

@@ -443,30 +443,6 @@ alias glmrc='glab mr create'
 alias glprv='glmrv'
 alias glprc='glmrc'
 
-## Azure DevOps (ADO) CLI
-alias azprc='az repos pr create --open --draft'
-alias azprl='az repos pr list -o table --creator cpalmieri@microsoft.com'
-alias azpr#='git rev-parse --abbrev-ref HEAD |  \
-                xargs az repos pr list -s | \
-                grep pullRequestId | \
-                sed -n "s/^.*[^0-9]\([0-9][0-9]*\).*/\1/p"'
-# View a pull request on ADO web
-#
-# $1 - The pull request number (PR#). If this argument is not supplied,
-#      defaults to the first PR# associated with the current branch.
-#
-# Examples
-#   azprv
-#   azprv 12345
-function azprv() {
-    if [ -z "$1" ]; then
-        PR_NUMBER=`azpr#`
-    else
-        PR_NUMBER="$1"
-    fi
-    open -na "Google Chrome" --args "https://dev.azure.com/onedrive/Clipchamp/_git/clipchamp-stack/pullrequest/$PR_NUMBER"
-}
-
 # ==== #
 # Path #
 # ==== #
@@ -502,9 +478,6 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
 # Open tmux in Terminal.app / iTerm only (or when AUTO_TMUX=1).
 # IDE integrated terminals and SSH stay plain zsh.
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && \
@@ -518,9 +491,6 @@ export PATH="$N_PREFIX/bin:$PATH"
 
 # Codename Goose
 export PATH="$HOME/.local/bin:$PATH"
-
-# Docker
-export PATH=$PATH:/Applications/Docker.app/Contents/Resources/bin
 
 # Shell-GPT integration ZSH v0.2
 _sgpt_zsh() {

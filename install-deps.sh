@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-WORK=false
-[[ "${1:-}" == "--work" ]] && WORK=true
-
 # Homebrew
 if ! command -v brew >/dev/null 2>&1; then
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -48,10 +45,5 @@ if [[ "$(uname -m)" == arm64 ]]; then
 fi
 
 "$(brew --prefix)/opt/fzf/install" --key-bindings --completion --no-update-rc
-
-if $WORK; then
-  brew install --cask google-cloud-sdk docker
-  brew install azure-cli
-fi
 
 echo "Done. Open a new terminal, then run ~/.files/install.sh"
