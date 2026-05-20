@@ -1,5 +1,5 @@
 name: context
-root: /Users/cp/dev/context
+root: ~/dev/context
 
 windows:
   - dev:

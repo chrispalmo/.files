@@ -1,5 +1,5 @@
 name: jamie-clone
-root: /Users/cp/dev/jamie-clone
+root: ~/dev/jamie-clone
 
 windows:
   - dev:

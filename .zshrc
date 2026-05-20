@@ -178,7 +178,7 @@ alias .f="cd ~/.files/"
 alias df="cd ~/.files/"
 alias db="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
-alias gdrive='cd "/Users/cp/Google Drive/My Drive"'
+alias gdrive='cd "$HOME/Google Drive/My Drive"'
 alias dl="cd ~/Downloads/"
 alias dv="cd ~/dev/"
 export NOTES_PATH="$HOME/Dropbox/apps/byword/notes"
@@ -503,7 +503,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/cp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # Open tmux in Terminal.app / iTerm only (or when AUTO_TMUX=1).
 # IDE integrated terminals and SSH stay plain zsh.

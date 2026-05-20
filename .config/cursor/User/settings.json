@@ -74,11 +74,11 @@
   "workbench.startupEditor": "none",
   "cucumberautocomplete.onTypeFormat": true,
   "editor.inlineSuggest.enabled": true,
-  "backgroundCover.imagePath": "/Users/cp/Dropbox/theme/fern-leaves-dark.jpeg",
+  "backgroundCover.imagePath": "${userHome}/Dropbox/theme/fern-leaves-dark.jpeg",
   "backgroundCover.opacity": 0.2,
   "azureFunctions.showProjectWarning": false,
   "svelte.enable-ts-plugin": true,
-  "eslint.runtime": "/Users/cp/.n/bin/node",
+  "eslint.runtime": "${userHome}/.n/bin/node",
   "vim.leader": "<space>",
   "accessibility.signals.terminalBell": {
     "sound": "off"

@@ -1,5 +1,7 @@
 # .files
 
+Personal macOS dotfiles. Clone to `~/.files`, install deps below, then run `install.sh`.
+
 ## install deps
 
 ```
@@ -11,13 +13,16 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 
 brew install bat
+brew install bc              # keyboard brightness helpers (kbb-up/kbb-down)
 brew install fzf
 brew install git git-lfs
 brew install gh
 brew install glab
 brew install neovim
+brew install pyenv
+brew install pyenv-virtualenv
 brew install ripgrep
-brew install the_silver_searcher
+brew install the_silver_searcher  # provides `ag` — used by fzf default command and `lag`
 brew install tmux
 brew install tmuxinator
 brew install tree
@@ -28,7 +33,7 @@ brew link --overwrite python@3.12
 brew install pipx
 pipx ensurepath
 pipx install shell-gpt
-sgpt --install-integration # only required if _sgpt_zsh() and zle shortcut binding not defined in .zshrc
+# sgpt zle binding (^o) and gcm commit helper are already in .zshrc
 
 # package management
 brew install n
@@ -40,20 +45,29 @@ n stable
 npm install --global yarn
 
 # reverse compatibility for Apple Silicon (M1 and beyond) for programs that
-still reference x86_64 executable
+# still reference x86_64 executables
 softwareupdate --install-rosetta --agree-to-license
 
 brew tap rakalex/mac-brightnessctl
 brew install mac-brightnessctl
 ```
 
+### optional (work / per-machine)
+
+Install only if you use the related aliases in `.zshrc`:
+
+```
+brew install --cask google-cloud-sdk   # gcloud completion in .zshrc
+brew install azure-cli                 # azpr* aliases
+brew install --cask docker             # Docker.app; .zshrc adds its bin to PATH
+```
+
 ## other apps and settings
 
 ```
-
 # OS essentials
 open "https://apps.apple.com/au/app/moom/id419330170?mt=12"
-open "https://code.visualstudio.com/Download"
+open "https://cursor.com/download"
 open "https://www.google.com/chrome/"
 
 brew install --cask karabiner-elements
@@ -82,8 +96,8 @@ $(brew --prefix)/opt/fzf/install
 git config --global user.name "chrispalmo"
 git config --global user.email "34981948+chrispalmo@users.noreply.github.com"
 
-ssh-keygen -t rsa -C "optional_comment"
-pbcopy < ~/.ssh/id_rsa.pub
+ssh-keygen -t ed25519 -C "optional_comment"
+pbcopy < ~/.ssh/id_ed25519.pub
 
 # click `New SSH key` and paste the public key
 open "https://github.com/settings/keys"
@@ -100,7 +114,7 @@ git clone git@github.com:chrispalmo/.files.git ~/.files
 ## import terminal profile
 
 1. open Terminal
-2. `Terminal` --> `settings` --> `profiles` --> `(...)` --> `import` --->
+2. `Terminal` → `settings` → `profiles` → `(...)` → `import` →
    `.terminal/terminal-profile.terminal` (Press `⌘ + Shift + .` to see hidden files)
 
 ## install
@@ -111,12 +125,21 @@ git clone git@github.com:chrispalmo/.files.git ~/.files
 ~/.files/install.sh
 ```
 
+`install.sh` is idempotent — safe to re-run. It symlinks dotfiles, imports Moom config, bootstraps vim/nvim plugins, and sets the screenshot folder.
+
+## after install
+
+1. **Create `~/.files/.keys`** — gitignored file sourced by `.zshrc` for local env vars / secrets (can start empty).
+2. **Cursor user rules** — paste each `*.md` from `.config/cursor/rules/` into **Cursor Settings → Rules → User Rules** (see that folder’s README).
+3. **Cursor agent hooks** — clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` to merge `~/.cursor/hooks.json`.
+4. **tmux** — `.zshrc` auto-starts tmux in Terminal.app / iTerm only. Set `AUTO_TMUX=1` to enable elsewhere. Uncomment `run "~/.tmux/plugins/tpm/tpm"` in `.tmux.conf` if you want TPM plugins to load.
+
 ## Cursor
 
 `install.sh` symlinks:
 
 | Repo path | Installed to |
-|-----------|----------------|
+|-----------|--------------|
 | `.config/cursor/User/settings.json` | `~/Library/Application Support/Cursor/User/settings.json` |
 | `.config/cursor/User/keybindings.json` | `~/Library/Application Support/Cursor/User/keybindings.json` |
 | `.config/cursor/commands/` | `~/.cursor/commands/` |

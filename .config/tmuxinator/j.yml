@@ -1,5 +1,5 @@
 name: jamie
-root: /Users/cp/dev/jamie
+root: ~/dev/jamie
 
 windows:
   - dev:

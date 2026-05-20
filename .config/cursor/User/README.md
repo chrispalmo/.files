@@ -23,9 +23,9 @@ VS Code uses `~/Library/Application Support/Code/User/`. Changing VS Code settin
 
 Keys prefixed with `cursor.` (and other Cursor-specific options) belong in `settings.json` here. VS Code ignores them.
 
-## Machine-specific values
+## Optional extension paths
 
-Some entries assume this Mac’s layout (e.g. Dropbox paths, `eslint.runtime`, `backgroundCover.imagePath`). After restore on a new machine, fix paths that differ—or remove optional extensions you no longer use.
+`settings.json` uses `${userHome}` for paths like Dropbox background and `eslint.runtime`. If an extension misbehaves after restore, confirm those files exist—or remove the setting if you no longer use the extension.
 
 ## Related config (other folders)
 

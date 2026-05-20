@@ -1,5 +1,5 @@
 name: context-clone
-root: /Users/cp/dev/context-clone
+root: ~/dev/context-clone
 
 windows:
   - dev:

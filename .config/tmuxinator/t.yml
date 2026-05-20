@@ -1,5 +1,5 @@
 name: tikk
-root: /Users/cp/dev/tikk
+root: ~/dev/tikk
 
 windows:
   - dev:
