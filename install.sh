@@ -2,14 +2,18 @@
 
 DOTFILES="$HOME/.files"
 
-# Backup a regular file or directory at target, then symlink to source if missing.
+# Ensure target is a symlink to source; backup real files/dirs first.
 link_dotfile() {
   _target=$1
   _source=$2
-  if [ -e "$_target" ] && [ ! -L "$_target" ]; then
+  if [ -L "$_target" ]; then
+    _current=$(readlink "$_target")
+    [ "$_current" = "$_source" ] && return 0
+    rm "$_target"
+  elif [ -e "$_target" ]; then
     mv "$_target" "$_target.backup"
   fi
-  [ ! -e "$_target" ] && ln -s "$_source" "$_target"
+  ln -s "$_source" "$_target"
 }
 
 # make symlinks for dotfiles
