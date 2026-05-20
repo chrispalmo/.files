@@ -162,8 +162,7 @@ function lag() {
 }
 
 # Navigate to a directory, print the current path, and list files.
-# Requires `setopt auto_cd` (cd by directly typing directory name).
-cd() { builtin cd "$@" && pwd && ls -lAh; }
+cdl() { builtin cd "$@" && pwd && ls -lAh; }
 
 # Web search
 alias es=explainshell
