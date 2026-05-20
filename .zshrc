@@ -506,11 +506,10 @@ eval "$(pyenv virtualenv-init -)"
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/cp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cp/google-cloud-sdk/completion.zsh.inc'; fi
 
-# Open tmux, ensuring
-#   1. `tmux` exists on system
-#   2. we are inside an interactive shell
-#   3. `tmux` doesn't run inside iteself
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+# Open tmux in Terminal.app / iTerm only (or when AUTO_TMUX=1).
+# IDE integrated terminals and SSH stay plain zsh.
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && \
+  { [ "${AUTO_TMUX:-}" = 1 ] || [ "$TERM_PROGRAM" = Apple_Terminal ] || [ "$TERM_PROGRAM" = iTerm.app ]; }; then
   exec tmux
 fi
 
