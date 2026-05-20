@@ -1,55 +1,40 @@
 #!/bin/sh
 
-# make symlinks for dotfiles
-[ ! -e ~/.config           ] && mkdir ~/.config
+DOTFILES="$HOME/.files"
 
-[   -e ~/.config/karabiner ] && mv    ~/.config/karabiner        ~/.config/karabiner.backup
-[ ! -e ~/.config/karabiner ] && ln -s ~/.files/.config/karabiner ~/.config/karabiner
-
-[   -e ~/.config/tmuxinator ] && mv    ~/.config/tmuxinator        ~/.config/tmuxinator.backup
-[ ! -e ~/.config/tmuxinator ] && ln -s ~/.files/.config/tmuxinator ~/.config/tmuxinator
-
-[   -e ~/.config/nvim ] && ln -s ~/.files/.config/nvim    ~/.config/nvim.backup
-[ ! -e ~/.config/nvim ] && ln -s ~/.files/.config/nvim    ~/.config/nvim
-
-[   -e ~/.tmux.conf   ] && ln -s ~/.files/.tmux.conf      ~/.tmux.conf.backup
-[ ! -e ~/.tmux.conf   ] && ln -s ~/.files/.tmux.conf      ~/.tmux.conf
-
-[   -e ~/.vim         ] && ln -s ~/.files/.vim                   ~/.vim.backup
-[ ! -e ~/.vim         ] && ln -s ~/.files/.vim                   ~/.vim
-
-[   -e ~/.vimrc       ] && ln -s ~/.files/.config/nvim/init.vim  ~/.vimrc.backup
-[ ! -e ~/.vimrc       ] && ln -s ~/.files/.config/nvim/init.vim  ~/.vimrc
-
-[   -e ~/.zshrc       ] && mv    ~/.zshrc                        ~/.zshrc.backup
-[ ! -e ~/.zshrc       ] && ln -s ~/.files/.zshrc                 ~/.zshrc
-
-[ ! -e ~/.gitignore_global ] && ln -s ~/.files/.gitignore_global ~/.gitignore_global
-git config --global core.excludesfile ~/.gitignore_global
-
-# Cursor editor settings (macOS)
-CURSOR_USER_DIR="$HOME/Library/Application Support/Cursor/User"
-DOTFILES_CURSOR_USER="$HOME/.files/.config/cursor/User"
-[ ! -d "$CURSOR_USER_DIR" ] && mkdir -p "$CURSOR_USER_DIR"
-for _cursor_file in settings.json keybindings.json; do
-  _target="$CURSOR_USER_DIR/$_cursor_file"
-  _source="$DOTFILES_CURSOR_USER/$_cursor_file"
+# Backup a regular file or directory at target, then symlink to source if missing.
+link_dotfile() {
+  _target=$1
+  _source=$2
   if [ -e "$_target" ] && [ ! -L "$_target" ]; then
     mv "$_target" "$_target.backup"
   fi
   [ ! -e "$_target" ] && ln -s "$_source" "$_target"
-done
+}
 
-# Cursor user slash commands (~/.cursor/commands/*.md)
-DOTFILES_CURSOR_COMMANDS="$HOME/.files/.config/cursor/commands"
+# make symlinks for dotfiles
+[ ! -e ~/.config ] && mkdir ~/.config
+
+link_dotfile ~/.config/karabiner        "$DOTFILES/.config/karabiner"
+link_dotfile ~/.config/tmuxinator       "$DOTFILES/.config/tmuxinator"
+link_dotfile ~/.config/nvim             "$DOTFILES/.config/nvim"
+link_dotfile ~/.tmux.conf               "$DOTFILES/.tmux.conf"
+link_dotfile ~/.vim                     "$DOTFILES/.vim"
+link_dotfile ~/.vimrc                   "$DOTFILES/.config/nvim/init.vim"
+link_dotfile ~/.zshrc                   "$DOTFILES/.zshrc"
+link_dotfile ~/.gitignore_global        "$DOTFILES/.gitignore_global"
+git config --global core.excludesfile ~/.gitignore_global
+
+# Cursor (macOS)
+CURSOR_USER="$HOME/Library/Application Support/Cursor/User"
+mkdir -p "$CURSOR_USER"
+link_dotfile "$CURSOR_USER/settings.json"    "$DOTFILES/.config/cursor/User/settings.json"
+link_dotfile "$CURSOR_USER/keybindings.json" "$DOTFILES/.config/cursor/User/keybindings.json"
 [ ! -e ~/.cursor ] && mkdir ~/.cursor
-if [ -e ~/.cursor/commands ] && [ ! -L ~/.cursor/commands ]; then
-  mv ~/.cursor/commands ~/.cursor/commands.backup
-fi
-[ ! -e ~/.cursor/commands ] && ln -s "$DOTFILES_CURSOR_COMMANDS" ~/.cursor/commands
+link_dotfile ~/.cursor/commands "$DOTFILES/.config/cursor/commands"
 
 # import moom config
-defaults import com.manytricks.Moom ~/.files/.config/moom/moom.plist
+defaults import com.manytricks.Moom "$DOTFILES/.config/moom/moom.plist"
 
 # install tmux plugins
 [ ! -e ~/.tmux/plugins/tpm ] &&
@@ -57,11 +42,11 @@ defaults import com.manytricks.Moom ~/.files/.config/moom/moom.plist
     ~/.tmux/plugins/tpm/bindings/install_plugins
 
 # install vim colorschemes
-[ ! -e ~/.files/.vim/colors/dark-plus ] &&
-  git clone https://github.com/dunstontc/vim-vscode-theme.git ~/.files/.vim/colors/dark-plus
+[ ! -e "$DOTFILES/.vim/colors/dark-plus" ] &&
+  git clone https://github.com/dunstontc/vim-vscode-theme.git "$DOTFILES/.vim/colors/dark-plus"
 
 # install vundle
-[ ! -e ~/.tmux/plugins/Vundle.vim ] &&
+[ ! -e ~/.vim/bundle/Vundle.vim ] &&
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # install vim plugins with vundle
@@ -69,7 +54,6 @@ vim +PluginInstall +qall
 
 # set default location for screenshots
 SCREENSHOT_PATH=~/Desktop/screenshots
-[ ! -d $SCREENSHOT_PATH ] && mkdir $SCREENSHOT_PATH
-defaults write com.apple.screencapture location $SCREENSHOT_PATH
+[ ! -d "$SCREENSHOT_PATH" ] && mkdir "$SCREENSHOT_PATH"
+defaults write com.apple.screencapture location "$SCREENSHOT_PATH"
 killall SystemUIServer
-
