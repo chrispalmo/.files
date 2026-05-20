@@ -27,6 +27,27 @@
 [ ! -e ~/.gitignore_global ] && ln -s ~/.files/.gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 
+# Cursor editor settings (macOS)
+CURSOR_USER_DIR="$HOME/Library/Application Support/Cursor/User"
+DOTFILES_CURSOR_USER="$HOME/.files/.config/cursor/User"
+[ ! -d "$CURSOR_USER_DIR" ] && mkdir -p "$CURSOR_USER_DIR"
+for _cursor_file in settings.json keybindings.json; do
+  _target="$CURSOR_USER_DIR/$_cursor_file"
+  _source="$DOTFILES_CURSOR_USER/$_cursor_file"
+  if [ -e "$_target" ] && [ ! -L "$_target" ]; then
+    mv "$_target" "$_target.backup"
+  fi
+  [ ! -e "$_target" ] && ln -s "$_source" "$_target"
+done
+
+# Cursor user slash commands (~/.cursor/commands/*.md)
+DOTFILES_CURSOR_COMMANDS="$HOME/.files/.config/cursor/commands"
+[ ! -e ~/.cursor ] && mkdir ~/.cursor
+if [ -e ~/.cursor/commands ] && [ ! -L ~/.cursor/commands ]; then
+  mv ~/.cursor/commands ~/.cursor/commands.backup
+fi
+[ ! -e ~/.cursor/commands ] && ln -s "$DOTFILES_CURSOR_COMMANDS" ~/.cursor/commands
+
 # import moom config
 defaults import com.manytricks.Moom ~/.files/.config/moom/moom.plist
 

@@ -110,3 +110,19 @@ git clone git@github.com:chrispalmo/.files.git ~/.files
 ```
 ~/.files/install.sh
 ```
+
+## Cursor
+
+`install.sh` symlinks:
+
+| Repo path | Installed to |
+|-----------|----------------|
+| `.config/cursor/User/settings.json` | `~/Library/Application Support/Cursor/User/settings.json` |
+| `.config/cursor/User/keybindings.json` | `~/Library/Application Support/Cursor/User/keybindings.json` |
+| `.config/cursor/commands/` | `~/.cursor/commands/` |
+
+**User rules** live as markdown in `.config/cursor/rules/` (see that folder’s README). After install, paste each rule into **Cursor Settings → Rules → User Rules**.
+
+**Agent hooks** (chat sync, etc.) are not in this repo. Clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` to merge `~/.cursor/hooks.json`.
+
+VS Code can keep using built-in Settings Sync; Cursor is managed here.
