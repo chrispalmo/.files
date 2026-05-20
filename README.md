@@ -1,65 +1,33 @@
 # .files
 
-Personal macOS dotfiles. Clone to `~/.files`, install deps below, then run `install.sh`.
+Personal macOS dotfiles. Work through the sections below in order on a fresh Mac.
+
+## git + ssh setup
+
+```
+git config --global user.name "chrispalmo"
+git config --global user.email "34981948+chrispalmo@users.noreply.github.com"
+
+ssh-keygen -t ed25519 -C "optional_comment"
+pbcopy < ~/.ssh/id_ed25519.pub
+
+# click `New SSH key` and paste the public key
+open "https://github.com/settings/keys"
+```
+
+## clone this repo
+
+```
+git clone git@github.com:chrispalmo/.files.git ~/.files
+```
 
 ## install deps
 
 ```
-# brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-brew update
-
-brew install bat
-brew install bc
-brew install fzf
-brew install git git-lfs
-brew install gh
-brew install jq
-brew install glab
-brew install neovim
-brew install pyenv
-brew install pyenv-virtualenv
-brew install ripgrep
-brew install the_silver_searcher
-brew install tmux
-brew install tmuxinator
-brew install tree
-brew install python@3.12
-brew link --overwrite python@3.12
-
-# shell-gpt <https://github.com/TheR1D/shell_gpt>
-brew install pipx
-pipx ensurepath
-pipx install shell-gpt
-# sgpt zle binding (^o) and gcm commit helper are in .zshrc
-
-# package management
-brew install n
-export N_PREFIX="$HOME/.n"
-export PATH="$N_PREFIX/bin:$PATH"
-mkdir -p "$N_PREFIX"
-n stable
-
-npm install --global yarn
-
-# reverse compatibility for Apple Silicon (M1 and beyond) for programs that
-# still reference x86_64 executables
-softwareupdate --install-rosetta --agree-to-license
-
-brew tap rakalex/mac-brightnessctl
-brew install mac-brightnessctl
+~/.files/install-deps.sh          # --work adds gcloud, azure-cli, docker
 ```
 
-### optional (work / per-machine)
-
-```
-brew install --cask google-cloud-sdk
-brew install azure-cli
-brew install --cask docker
-```
+Then open a new terminal (pick up brew / pipx / n paths).
 
 ## other apps and settings
 
@@ -83,33 +51,6 @@ open "https://www.spotify.com/au/download/mac/"
 open "https://transmissionbt.com/download.html"
 ```
 
-## install useful key bindings and fuzzy completion
-
-```
-$(brew --prefix)/opt/fzf/install
-```
-
-## git + ssh setup
-
-```
-git config --global user.name "chrispalmo"
-git config --global user.email "34981948+chrispalmo@users.noreply.github.com"
-
-ssh-keygen -t ed25519 -C "optional_comment"
-pbcopy < ~/.ssh/id_ed25519.pub
-
-# click `New SSH key` and paste the public key
-open "https://github.com/settings/keys"
-```
-
-## clone this repo
-
-clone this repo to `~/.files`:
-
-```
-git clone git@github.com:chrispalmo/.files.git ~/.files
-```
-
 ## import terminal profile
 
 1. open Terminal
@@ -118,7 +59,7 @@ git clone git@github.com:chrispalmo/.files.git ~/.files
 
 ## install
 
-*ensure Moom is closed before running `install.sh`!*
+_⚠️ ensure Moom is closed before running `install.sh`!_
 
 ```
 ~/.files/install.sh
