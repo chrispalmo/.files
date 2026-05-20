@@ -284,7 +284,6 @@ alias gob='git checkout -b' # create new branch, switch to it
 alias go-='git checkout -'
 alias gp='git push'
 alias gpf='git push --force'
-alias gpu='git push --set-upstream origin' # use: gpu branch-name
 alias grc='git reset HEAD^' # reset to state before last commit, keeping changes
 alias gr='git reset && git status'
 alias grh='git reset --hard; git status'
@@ -409,7 +408,7 @@ alias ghbc='{CURRENT_BRANCH=$(gbn); CURRENT_REPO=$(cut -d . -f 1 <<< $(cut -d : 
 alias glbc='{CURRENT_BRANCH=$(gbn); CURRENT_REPO=$(cut -d / -f 2,3 <<< $(cut -d . -f 2 <<< $(git config --get remote.origin.url))); o https://gitlab.com/"$CURRENT_REPO"/-/compare/master..."$CURRENT_BRANCH";}'
 ### misc
 alias gbnc='gbn | copy'
-alias gpu='gbn | xargs git push --set-upstream origin'
+alias gpu='git push --set-upstream origin $(gbn)'
 alias glag='gl | ag'
 function gac() { ga. ; gcm "$@" ;}
 function gacp() { ga. ; gcm "$@" ; gp ;}
