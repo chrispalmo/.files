@@ -7,7 +7,12 @@ let g:omni_sql_no_default_maps = 1
 
 "Vundle
 filetype off
-set rtp+=/usr/local/opt/fzf
+if executable('brew')
+  let s:fzf_dir = trim(system('brew --prefix fzf 2>/dev/null'))
+  if v:shell_error == 0 && isdirectory(s:fzf_dir)
+    let &runtimepath .= ',' . s:fzf_dir
+  endif
+endif
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'

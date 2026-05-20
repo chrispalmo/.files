@@ -471,8 +471,8 @@ function azprv() {
 # Path #
 # ==== #
 
-# neovim
-export PATH="$PATH:/opt/nvim-linux64/bin"
+# neovim (linux tarball install)
+[[ -d /opt/nvim-linux64/bin ]] && export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # vscode
 export PATH="/usr/local/bin/code:$PATH"

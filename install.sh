@@ -53,8 +53,12 @@ defaults import com.manytricks.Moom "$DOTFILES/.config/moom/moom.plist"
 [ ! -e ~/.vim/bundle/Vundle.vim ] &&
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-# install vim plugins with vundle
-vim +PluginInstall +qall
+# install vim/neovim plugins with vundle
+if command -v nvim >/dev/null 2>&1; then
+  nvim +PluginInstall +qall
+elif command -v vim >/dev/null 2>&1; then
+  vim +PluginInstall +qall
+fi
 
 # set default location for screenshots
 SCREENSHOT_PATH=~/Desktop/screenshots
