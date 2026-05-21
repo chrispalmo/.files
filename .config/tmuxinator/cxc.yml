@@ -1,5 +1,5 @@
 name: context-clone
-root: ~/dev/context-clone
+root: <%= ENV.fetch('DEV_ROOT', File.expand_path('~/dev')) %>/context-clone
 
 windows:
   - dev:

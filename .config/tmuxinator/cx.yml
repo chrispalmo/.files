@@ -1,5 +1,5 @@
 name: context
-root: ~/dev/context
+root: <%= ENV.fetch('DEV_ROOT', File.expand_path('~/dev')) %>/context
 
 windows:
   - dev:

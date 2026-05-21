@@ -70,10 +70,10 @@ _⚠️ ensure Moom is closed before running `install.sh`!_
 ## after install
 
 1. `touch ~/.files/.keys ~/.files/.scratch`
-2. Cursor → **Shell Command: Install 'cursor' command in PATH** (VS Code too if you use `code` / `cnotes`)
+2. Cursor → **Shell Command: Install 'cursor' command in PATH** (VS Code too if you use `code`)
 3. Paste each `*.md` from `.config/cursor/rules/` into **Cursor Settings → Rules → User Rules**
 4. Clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` for hooks
-5. Edit hardcoded paths in `.zshrc` / tmuxinator if needed (Dropbox, Google Drive, `~/dev`)
+5. Edit hardcoded paths if needed (Dropbox, Google Drive, `DEV_ROOT` in `.zshrc` / tmuxinator)
 6. Set `AUTO_TMUX=1` to auto-start tmux outside Terminal/iTerm; uncomment TPM in `.tmux.conf` if wanted
 
 ## Cursor

@@ -173,6 +173,8 @@ alias lhh=localhostHTTP
 alias soa='open https://stackoverflow.com/questions/ask'
 alias so=stackoverflow
 
+export DEV_ROOT="${DEV_ROOT:-$HOME/dev}"
+
 # Nav
 alias .f="cd ~/.files/"
 alias df="cd ~/.files/"
@@ -180,10 +182,7 @@ alias db="cd ~/Dropbox/"
 alias dt="cd ~/Desktop/"
 alias gdrive='cd "$HOME/Google Drive/My Drive"'
 alias dl="cd ~/Downloads/"
-alias dv="cd ~/dev/"
-export NOTES_PATH="$HOME/Dropbox/apps/byword/notes"
-alias notes='cd "$NOTES_PATH"'
-alias cnotes='code "$NOTES_PATH"'
+alias dv='cd "$DEV_ROOT"'
 
 # Misc
 alias l='pwd && ls -lAh'
