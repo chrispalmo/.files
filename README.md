@@ -59,22 +59,21 @@ open "https://transmissionbt.com/download.html"
 
 ## install
 
-_⚠️ ensure Moom is closed before running `install.sh`!_
+_⚠️ if Moom is installed, quit it before running. Import is skipped when Moom is not installed._
 
 ```
 ~/.files/install.sh
 ```
 
-`install.sh` is idempotent. Symlinks dotfiles, imports Moom, bootstraps vim plugins, sets screenshot folder.
+`install.sh` is idempotent. Symlinks dotfiles, imports Moom (when installed), bootstraps vim plugins, creates `.keys`/`.scratch`, sets screenshot folder.
 
 ## after install
 
-1. `touch ~/.files/.keys ~/.files/.scratch`
-2. Cursor → **Shell Command: Install 'cursor' command in PATH** (VS Code too if you use `code`)
-3. Paste each `*.md` from `.config/cursor/rules/` into **Cursor Settings → Rules → User Rules**
-4. Clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` for hooks
-5. Edit hardcoded paths if needed (Dropbox, Google Drive, `DEV_ROOT` in `.zshrc` / tmuxinator)
-6. Set `AUTO_TMUX=1` to auto-start tmux outside Terminal/iTerm; uncomment TPM in `.tmux.conf` if wanted
+1. Cursor → **Shell Command: Install 'cursor' command in PATH** (VS Code too if you use `code`)
+2. Paste each `*.md` from `.config/cursor/rules/` into **Cursor Settings → Rules → User Rules**
+3. Clone [agent-chats](https://github.com/chrispalmo/agent-chats) and run `./scripts/install.sh` for hooks
+4. Edit hardcoded paths if needed (Dropbox, Google Drive, `DEV_ROOT` in `.zshrc` / tmuxinator)
+5. Set `AUTO_TMUX=1` to auto-start tmux outside Terminal/iTerm; uncomment TPM in `.tmux.conf` if wanted
 
 ## Cursor
 
