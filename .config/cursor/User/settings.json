@@ -68,7 +68,7 @@
   "backgroundCover.imagePath": "${userHome}/Dropbox/theme/fern-leaves-dark.jpeg",
   "backgroundCover.opacity": 0.2,
   "svelte.enable-ts-plugin": true,
-  "eslint.runtime": "${userHome}/.n/bin/node",
+  "eslint.runtime": "/Users/cp/.n/bin/node",
   "vim.leader": "<space>",
   "accessibility.signals.terminalBell": {
     "sound": "off"
