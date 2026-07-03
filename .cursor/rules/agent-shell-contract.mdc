@@ -1,0 +1,8 @@
+---
+description: Keep shell dotfiles safe for AI agents
+alwaysApply: true
+---
+
+# Agent Shell Contract
+
+Read `AGENTS.md` before editing shell startup files in this dotfiles repo.

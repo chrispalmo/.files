@@ -1,4 +1,61 @@
 # https://wiki.gentoo.org/wiki/Zsh/Guide
+
+# Agent-driven shells must stay boring and non-interactive.
+# Cursor sets CURSOR_AGENT. Claude Code sets CLAUDECODE in spawned
+# subprocesses, and newer versions set CLAUDE_CODE_CHILD_SESSION for tool
+# subprocesses. Future agents: keep shared environment setup above the guard
+# and human aliases/functions below it.
+if [[ -n "$CURSOR_AGENT" || -n "$CLAUDECODE" || -n "$CLAUDE_CODE_CHILD_SESSION" ]]; then
+    export AI_AGENT_SHELL=1
+fi
+
+# ================== #
+# Shared Environment #
+# ================== #
+
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
+
+export DEV_ROOT="${DEV_ROOT:-$HOME/dev}"
+
+# neovim (linux tarball install)
+[[ -d /opt/nvim-linux64/bin ]] && export PATH="$PATH:/opt/nvim-linux64/bin"
+
+# vscode
+export PATH="/usr/local/bin/code:$PATH"
+
+# The next lines set up pyenv for managing multiple Python versions.
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv &>/dev/null; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# Local Node.js via `n`
+export N_PREFIX="$HOME/.n"
+export PATH="$N_PREFIX/bin:$PATH"
+
+# Codename Goose and other user-local tools
+export PATH="$HOME/.local/bin:$PATH"
+
+# Import keys for both human and agent shells; this file must stay quiet.
+[ -f ~/.files/.keys ] && source ~/.files/.keys
+
+# Stop here for AI agents. Everything below is human-only shell ergonomics:
+# aliases, prompt hooks, fzf, tmux, browser helpers, and interactive commands.
+if [[ -n "$AI_AGENT_SHELL" ]]; then
+    # Fail fast if a tool tries to open an editor; agents edit files via IDE tools.
+    export EDITOR=:
+    export GIT_EDITOR=true
+    return 0
+fi
+
+export EDITOR=nvim
+export GIT_EDITOR=nvim
+
 autoload -U colors compinit promptinit
 colors
 compinit
@@ -22,10 +79,6 @@ function set-prompt {
     PROMPT="$VENV%{$fg_bold[green]%}%n%{$reset_color%} %{$fg_bold[yellow]%}%~%{$fg_bold[magenta]%} ${BRANCH}%{$reset_color%} $1 "
 }
 
-HISTSIZE=100000
-SAVEHIST=100000
-HISTFILE=~/.zsh_history
-
 setopt auto_cd # cd by directly typing directory name
 setopt inc_append_history # update history after each command, from multiple shells
 setopt menu_complete
@@ -34,9 +87,6 @@ setopt NO_BEEP
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' ignored-patterns '*?.pyc' '__pycache__' '*.class' '.zcompdump' '.zsh_history'
-
-export EDITOR=nvim
-export GIT_EDITOR=nvim
 
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
@@ -172,8 +222,6 @@ alias lhs=localhostHTTPS
 alias lhh=localhostHTTP
 alias soa='open https://stackoverflow.com/questions/ask'
 alias so=stackoverflow
-
-export DEV_ROOT="${DEV_ROOT:-$HOME/dev}"
 
 # Nav
 alias .f="cd ~/.files/"
@@ -447,12 +495,6 @@ alias glprc='glmrc'
 # Path #
 # ==== #
 
-# neovim (linux tarball install)
-[[ -d /opt/nvim-linux64/bin ]] && export PATH="$PATH:/opt/nvim-linux64/bin"
-
-# vscode
-export PATH="/usr/local/bin/code:$PATH"
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
@@ -471,26 +513,12 @@ _fzf_comprun() {
   esac
 }
 
-# The next line sets up pyenv for managing multiple Python versions
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # Open tmux in Terminal.app / iTerm only (or when AUTO_TMUX=1).
 # IDE integrated terminals and SSH stay plain zsh.
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && \
   { [ "${AUTO_TMUX:-}" = 1 ] || [ "$TERM_PROGRAM" = Apple_Terminal ] || [ "$TERM_PROGRAM" = iTerm.app ]; }; then
   exec tmux
 fi
-
-# Local Node.js via `n`
-export N_PREFIX="$HOME/.n"
-export PATH="$N_PREFIX/bin:$PATH"
-
-# Codename Goose
-export PATH="$HOME/.local/bin:$PATH"
 
 # Shell-GPT integration ZSH v0.2
 _sgpt_zsh() {
@@ -505,9 +533,6 @@ fi
 zle -N _sgpt_zsh
 bindkey '^o' _sgpt_zsh
 # </Shell-GPT integration ZSH v0.2>
-
-# Import keys
-source ~/.files/.keys
 
 # Import ad-hoc aliases
 source ~/.files/.scratch
