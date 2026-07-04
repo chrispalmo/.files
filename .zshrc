@@ -1,60 +1,16 @@
 # https://wiki.gentoo.org/wiki/Zsh/Guide
+# Human-only interactive setup. Machine baseline lives in ~/.zshenv (see AGENTS.md).
 
-# Agent-driven shells must stay boring and non-interactive.
-# Cursor sets CURSOR_AGENT. Claude Code sets CLAUDECODE in spawned
-# subprocesses, and newer versions set CLAUDE_CODE_CHILD_SESSION for tool
-# subprocesses. Future agents: keep shared environment setup above the guard
-# and human aliases/functions below it.
-if [[ -n "$CURSOR_AGENT" || -n "$CLAUDECODE" || -n "$CLAUDE_CODE_CHILD_SESSION" ]]; then
-    export AI_AGENT_SHELL=1
-fi
-
-# ================== #
-# Shared Environment #
-# ================== #
-
-HISTSIZE=100000
-SAVEHIST=100000
-HISTFILE=~/.zsh_history
-
-export DEV_ROOT="${DEV_ROOT:-$HOME/dev}"
-
-# neovim (linux tarball install)
-[[ -d /opt/nvim-linux64/bin ]] && export PATH="$PATH:/opt/nvim-linux64/bin"
-
-# vscode
-export PATH="/usr/local/bin/code:$PATH"
-
-# The next lines set up pyenv for managing multiple Python versions.
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv &>/dev/null; then
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-# Local Node.js via `n`
-export N_PREFIX="$HOME/.n"
-export PATH="$N_PREFIX/bin:$PATH"
-
-# Codename Goose and other user-local tools
-export PATH="$HOME/.local/bin:$PATH"
-
-# Import keys for both human and agent shells; this file must stay quiet.
-[ -f ~/.files/.keys ] && source ~/.files/.keys
-
-# Stop here for AI agents. Everything below is human-only shell ergonomics:
-# aliases, prompt hooks, fzf, tmux, browser helpers, and interactive commands.
-if [[ -n "$AI_AGENT_SHELL" ]]; then
-    # Fail fast if a tool tries to open an editor; agents edit files via IDE tools.
-    export EDITOR=:
-    export GIT_EDITOR=true
+if [[ -n "$AI_AGENT_SHELL" ]] || [[ ! -o interactive ]]; then
     return 0
 fi
 
 export EDITOR=nvim
 export GIT_EDITOR=nvim
+
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
 
 autoload -U colors compinit promptinit
 colors

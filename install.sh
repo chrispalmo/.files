@@ -8,7 +8,7 @@ DOTFILES="$HOME/.files"
   exit 1
 }
 
-# Required by .zshrc (gitignored); create before symlinking shell config
+# Required by shell config (gitignored); create before symlinking shell config
 touch "$DOTFILES/.keys" "$DOTFILES/.scratch"
 
 # Ensure target is a symlink to source; backup real files/dirs first.
@@ -34,6 +34,7 @@ link_dotfile "$HOME/.config/nvim"             "$DOTFILES/.config/nvim"
 link_dotfile "$HOME/.tmux.conf"               "$DOTFILES/.tmux.conf"
 link_dotfile "$HOME/.vim"                     "$DOTFILES/.vim"
 link_dotfile "$HOME/.vimrc"                   "$DOTFILES/.config/nvim/init.vim"
+link_dotfile "$HOME/.zshenv"                  "$DOTFILES/.zshenv"
 link_dotfile "$HOME/.zshrc"                   "$DOTFILES/.zshrc"
 link_dotfile "$HOME/.gitignore_global"        "$DOTFILES/.gitignore_global"
 git config --global core.excludesfile "$HOME/.gitignore_global"
